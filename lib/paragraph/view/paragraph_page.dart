@@ -64,10 +64,10 @@ class ParagraphCard extends StatelessWidget {
                                 'border-collapse': 'collapse',
                               };
                             case 'td':
-                              return {'border': '1px solid'};
+                              return {'border': '1px solid', 'vertical-align': 'top'};
                           }
                           if (element.className.contains('align_center')){
-                            return {'text-align': 'center'};
+                            return {'text-align': 'center', 'width': '100%'};
                           }
 
                           return null;
