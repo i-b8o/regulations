@@ -6,6 +6,8 @@ import 'package:regulation/paragraph/bloc/paragraph_bloc.dart';
 import 'package:regulation_api/regulation_api.dart';
 import 'package:regulation_repository/regulation_repository.dart';
 
+import '../widgets/paragraph_card.dart';
+
 class ParagraphPage extends StatelessWidget {
   const ParagraphPage({Key? key, required this.id}) : super(key: key);
   final int id;
@@ -37,53 +39,3 @@ class ParagraphPage extends StatelessWidget {
   }
 }
 
-class ParagraphCard extends StatelessWidget {
-  const ParagraphCard({Key? key, required this.paragraph}) : super(key: key);
-  final Paragraph paragraph;
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      color: Color(0XFFFAFAFA),
-      margin: EdgeInsets.zero,
-      shape: const Border(
-        bottom: BorderSide(width: 1.0, color: Color.fromRGBO(230, 230, 230, 1)),
-      ),
-      child: Container(
-          alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
-          child: paragraph.isHTML
-              ? SingleChildScrollView(
-                  padding: EdgeInsets.all(2),
-                  scrollDirection: Axis.horizontal,
-                  child: HtmlWidget(paragraph.content,  
-                        customStylesBuilder: (element) {
-                          switch (element.localName) {
-                            case 'table':
-                              return {
-                                'border': '1px solid',
-                                'border-collapse': 'collapse',
-                              };
-                            case 'td':
-                              return {'border': '1px solid', 'vertical-align': 'top'};
-                          }
-                          if (element.className.contains('align_center')){
-                            return {'text-align': 'center', 'width': '100%'};
-                          }
-
-                          return null;
-                        }
-                  )
-
-                  // Html(
-                  //   data: paragraph.content,
-                  //   style: {
-                  //     "table": Style(
-                  //       width: MediaQuery.of(context).size.width,
-                  //     ),
-                  //   },
-                  // ),
-                  )
-              : Text(paragraph.content)),
-    );
-  }
-}
