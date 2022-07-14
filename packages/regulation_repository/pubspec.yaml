@@ -1,0 +1,14 @@
+name: regulation_repository
+description: A repository that handles regulation related requests.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+
+dependencies:
+  regulation_api:
+    path: ../regulation_api
+
+dev_dependencies:
+  very_good_analysis: ^2.4.0
