@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import 'package:regulation/paragraph/bloc/paragraph_bloc.dart';
 import 'package:regulation_api/regulation_api.dart';
@@ -11,6 +10,7 @@ import '../widgets/paragraph_card.dart';
 class ParagraphPage extends StatelessWidget {
   const ParagraphPage({Key? key, required this.id}) : super(key: key);
   final int id;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +21,11 @@ class ParagraphPage extends StatelessWidget {
         child: BlocBuilder<ParagraphBloc, ParagraphState>(
           builder: (context, state) {
             if (state is ParagraphInitial) {
+              List<Paragraph> paragraphs = state.paragraphs;
               return ListView(
-                children: state.paragraphs
+                children: paragraphs
                     .map((paragraph) => ParagraphCard(
+                      isLast: paragraphs.indexOf(paragraph) == (paragraphs.length - 1),
                           paragraph: paragraph,
                         ))
                     .toList(),

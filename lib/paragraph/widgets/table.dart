@@ -12,7 +12,6 @@ class ParagraphTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('object'+paragraph.content);
     return HtmlWidget(paragraph.content,
         customStylesBuilder: (element) {
       switch (element.localName) {

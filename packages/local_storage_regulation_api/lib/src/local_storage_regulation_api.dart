@@ -26,7 +26,6 @@ class LocalStorageRegulationApi extends RegulationApi {
   List<ChapterInfo> getTableOfContents() {
     _tableOfContents.sort((a, b) => a.orderNum.compareTo(b.orderNum));
     return _tableOfContents;
-    ;
   }
 
   List<Paragraph> getParagraphsByChapterID(int chapterID) {
