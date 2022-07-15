@@ -12,6 +12,7 @@ class ParagraphCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(paragraph.content);
     ParagraphClass pClass;
     switch (paragraph.paragraphClass) {
       case "align_right": 
@@ -108,7 +109,7 @@ class ParagraphText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(paragraph.content + pClass.toString());
+
     return pClass == ParagraphClass.right ? Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [Text(paragraph.content)],

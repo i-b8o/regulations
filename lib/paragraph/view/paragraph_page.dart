@@ -19,6 +19,7 @@ class ParagraphPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0XFFFAFAFA),
       body: BlocProvider(
         create: (context) => ParagraphBloc(
             arguments: paragraphArguments,
@@ -31,17 +32,28 @@ class ParagraphPage extends StatelessWidget {
                 itemCount: paragraphs.length,
                 itemBuilder: (BuildContext context, int index) {  
                     if (index == 0 ){
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 16.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Flexible(child: Text(state.header, style: TextStyle(fontWeight: FontWeight.bold),)),
-                          ],
-                        ),
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: paragraphs[index].paragraphClass == "align_right" ?  EdgeInsets.all( 25.0) : EdgeInsets.only(top: 50.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Flexible(child: Text(state.header, textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),)),
+                              ],
+                            ),
+                          ),
+                          _buildParagraphCard(paragraphs[index])
+                        ],
                       );
                     } else if (index == (paragraphs.length - 1) ){
-                      return SizedBox(height: 15,);
+                      return Column(
+                        children: [
+                          _buildParagraphCard(paragraphs[index]),
+                          Container(height: 25, color: Color(0XFFFAFAFA),),
+                        ],
+                      );
                     }
                     return _buildParagraphCard(paragraphs[index]);
                 
