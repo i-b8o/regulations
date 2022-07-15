@@ -19,6 +19,11 @@ class ParagraphTable extends StatelessWidget {
           return {
             'border': '1px solid',
             'border-collapse': 'collapse',
+            'font-size': '16px',
+            'line-height': '18px',
+            'letter-spacing': '0',
+            'font-weight': '400',
+            'font-family': 'Times New Roman',
           };
         case 'td':
           return {'border': '1px solid', 'vertical-align': 'top'};
