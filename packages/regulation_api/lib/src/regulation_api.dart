@@ -9,6 +9,8 @@ abstract class RegulationApi {
 
   List<ChapterInfo> getTableOfContents();
 
+  int countChapters();
+
   List<Paragraph> getParagraphsByChapterID(int chapterID);
 
   // Future<List<Paragraph>> getParagraphs();

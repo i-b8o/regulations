@@ -28,6 +28,7 @@ class ParagraphCard extends StatelessWidget {
         pClass = ParagraphClass.none;
     };
     return Card(
+      shadowColor : Colors.transparent,
       color: Color(0XFFFAFAFA),
       margin: EdgeInsets.zero,
       child: pClass == ParagraphClass.indent ? SizedBox(height: 15,) :  buildCard(pClass),

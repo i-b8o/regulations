@@ -11,6 +11,11 @@ class RegulationRepository {
       _regulationApi.getRegulationAbbreviation();
 
   List<ChapterInfo> getTableOfContents() => _regulationApi.getTableOfContents();
+  
+  int countChapters() => _regulationApi.countChapters();
+
   List<Paragraph> getParagraphsByChapterID(int chapterID) =>
       _regulationApi.getParagraphsByChapterID(chapterID);
+
+
 }

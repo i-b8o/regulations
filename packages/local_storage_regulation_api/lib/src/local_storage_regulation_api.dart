@@ -28,6 +28,10 @@ class LocalStorageRegulationApi extends RegulationApi {
     return _tableOfContents;
   }
 
+  int countChapters(){
+    return Regulation.chapters.length;
+  }
+
   List<Paragraph> getParagraphsByChapterID(int chapterID) {
     Chapter chapter =
         Regulation.chapters.where((chapter) => chapter.id == chapterID).first;

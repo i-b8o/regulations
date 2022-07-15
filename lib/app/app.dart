@@ -23,9 +23,9 @@ class App extends StatelessWidget {
 
 class ParagraphArguments {
   final String name,num;
-  final int chapterID;
+  final int chapterID, chapterOrderNum;
 
-  ParagraphArguments({required this.name, required this.num, required this.chapterID});
+  ParagraphArguments({required this.name, required this.num, required this.chapterID, required this.chapterOrderNum});
 
 }
 

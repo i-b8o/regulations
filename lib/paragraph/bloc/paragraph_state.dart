@@ -10,6 +10,7 @@ abstract class ParagraphState extends Equatable {
 class ParagraphInitial extends ParagraphState {
   final List<Paragraph> paragraphs;
   final String header;
+  final int chapterOrderNum, totalChapters;
 
-  ParagraphInitial({required this.paragraphs, required this.header});
+  ParagraphInitial({required this.paragraphs, required this.header, required this.chapterOrderNum, required this.totalChapters});
 }
