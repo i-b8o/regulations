@@ -32,10 +32,17 @@ class LocalStorageRegulationApi extends RegulationApi {
     return Regulation.chapters.length;
   }
 
-  List<Paragraph> getParagraphsByChapterID(int chapterID) {
+  List<Paragraph> getParagraphsByChapterOrderNum(int chapterID) {
     Chapter chapter =
-        Regulation.chapters.where((chapter) => chapter.id == chapterID).first;
+        Regulation.chapters.where((chapter) => chapter.orderNum == chapterID).first;
     return chapter.paragraphs;
+  }
+
+  String getChapterNameByOrderNum(int chapterID){
+    Chapter chapter =
+        Regulation.chapters.where((chapter) => chapter.orderNum == chapterID).first;
+        String result = chapter.num.length > 0 ? '${chapter.num}. ${chapter.name}' : chapter.name;
+    return result;
   }
 
   // Future<List<Paragraph>> getParagraphs() {}

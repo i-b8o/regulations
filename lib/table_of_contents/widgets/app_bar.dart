@@ -31,21 +31,5 @@ class TableOfContentsAppBar extends StatelessWidget {
       },
     );
 
-    // Color? foregroundColor = Theme.of(context).appBarTheme.foregroundColor;
-    // return BlocBuilder<TableOfContentsBloc, TableOfContentsState>(
-    //   buildWhen: (prev, state) => prev.runtimeType != state.runtimeType,
-    //   builder: (context, state) {
-    //     print(state);
-    //     if (state is StateTableOfContentsSearchTextFieldActivated) {
-    //       return SearchAppBar(
-    //         foregroundColor: foregroundColor,
-    //       );
-    //     }
-    //     return InitAppBAr(
-    //       title: regulationName,
-    //       foregroundColor: foregroundColor,
-    //     );
-    //   },
-    // );
   }
 }

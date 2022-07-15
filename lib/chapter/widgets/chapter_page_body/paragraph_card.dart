@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:regulation/paragraph/widgets/table.dart';
+
 import 'package:regulation_api/regulation_api.dart';
+
+
+import 'paragraph_table.dart';
+import 'paragraph_text.dart';
+
+
 
 enum ParagraphClass { right, center, indent, none }
 
@@ -12,7 +18,6 @@ class ParagraphCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(paragraph.content);
     ParagraphClass pClass;
     switch (paragraph.paragraphClass) {
       case "align_right": 
@@ -66,59 +71,5 @@ class ParagraphCard extends StatelessWidget {
                 : ParagraphText(paragraph: paragraph, pClass: pClass,));
   }
 
-  // Container buildLastCard(ParagraphClass pClass) {
-
-  //   return Container(
-  //       alignment: Alignment.centerLeft,
-  //       padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: pClass == ParagraphClass.none ? 16.0 : 2.0),
-  //       child: paragraph.isTable
-  //           ? SingleChildScrollView(
-  //               scrollDirection: Axis.horizontal,
-  //               child: Column(
-  //                 children: [
-  //                   ParagraphTable(paragraph: paragraph),
-  //                   SizedBox(height: 25,)
-  //                 ],
-  //               ))
-  //           : paragraph.isHTML
-  //               ? Column(
-  //                 children: [
-  //                   HtmlWidget(
-  //                     paragraph.content,
-  //                     customStylesBuilder: pClass == ParagraphClass.none ? null :  (element) {return { 'text-align': pClass == ParagraphClass.right ? 'right' : 'center'};},
-  //                     ),
-  //                     SizedBox(height: 25,)
-  //                 ],
-  //               )
-  //               : Column(
-  //                 children: [
-  //                   ParagraphText(paragraph: paragraph, pClass: pClass,),
-  //                   SizedBox(height: 25,)
-  //                 ],
-  //               ));
-  // }
 }
 
-class ParagraphText extends StatelessWidget {
-  const ParagraphText({
-    Key? key,
-    required this.paragraph, required this.pClass,
-  }) : super(key: key);
-
-  final Paragraph paragraph;
-  final ParagraphClass pClass;
-
-  @override
-  Widget build(BuildContext context) {
-
-    return pClass == ParagraphClass.right ? Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [Text(paragraph.content)],
-      ) : pClass == ParagraphClass.center ? Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [Flexible(child: Text(paragraph.content, textAlign: TextAlign.center,))],
-      ) : Text(paragraph.content);  
-
-
-  }
-}

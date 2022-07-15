@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:regulation/home/home.dart';
-import 'package:regulation/paragraph/view/paragraph_page.dart';
+
 import 'package:regulation/table_of_contents/bloc/table_of_contents_bloc.dart';
 import 'package:regulation_repository/regulation_repository.dart';
+import '../chapter/view/chapter_page.dart';
 import '../one/one.dart';
 import '../table_of_contents/view/table_of_contents.dart';
 import '../theme/theme.dart';
@@ -22,10 +23,10 @@ class App extends StatelessWidget {
 }
 
 class ParagraphArguments {
-  final String name,num;
-  final int chapterID, chapterOrderNum;
+  
+  final int totalChapters, chapterOrderNum;
 
-  ParagraphArguments({required this.name, required this.num, required this.chapterID, required this.chapterOrderNum});
+  ParagraphArguments({ required this.totalChapters, required this.chapterOrderNum});
 
 }
 
@@ -41,7 +42,7 @@ class AppView extends StatelessWidget {
             regulationRepository: context.read<RegulationRepository>(),
           ),
         ),
-        BlocProvider(create: (_) => HomeCubit())
+        BlocProvider(create: (_) => HomeCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -51,7 +52,7 @@ class AppView extends StatelessWidget {
           '/': (context) => HomePage(),
           '/buy': (context) => One(),
           '/tableOfContents': (context) => (TableOfContentsPage()),
-          '/paragraph': (context) => ParagraphPage(
+          '/paragraph': (context) => ChapterPage(
                 paragraphArguments: ModalRoute.of(context)!.settings.arguments as ParagraphArguments,
               )
         },

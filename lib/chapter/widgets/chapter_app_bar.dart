@@ -41,6 +41,7 @@ class ParagraphAppBar extends StatelessWidget {
                 height: 30,
                 width: 30,
                 child: TextFormField(
+                  keyboardType: TextInputType.number,
                     initialValue: '$chapterOrderNum',
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
@@ -58,7 +59,7 @@ class ParagraphAppBar extends StatelessWidget {
                     style: TextStyle(
                         color: Color(0XFF3B4C61),
                         fontSize: 18,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.w500),
                   )
                 ])),
 

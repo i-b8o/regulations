@@ -14,8 +14,9 @@ class RegulationRepository {
   
   int countChapters() => _regulationApi.countChapters();
 
-  List<Paragraph> getParagraphsByChapterID(int chapterID) =>
-      _regulationApi.getParagraphsByChapterID(chapterID);
+  List<Paragraph> getParagraphsByChapterOrederNum(int chapterOrderNum) =>
+      _regulationApi.getParagraphsByChapterOrderNum(chapterOrderNum);
 
+  String getChapterNameByOrderNum(int chapterOrderNum) => _regulationApi.getChapterNameByOrderNum(chapterOrderNum);
 
 }

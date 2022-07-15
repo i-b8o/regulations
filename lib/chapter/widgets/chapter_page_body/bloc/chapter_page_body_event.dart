@@ -1,0 +1,8 @@
+part of 'chapter_page_body_bloc.dart';
+
+abstract class ChapterPageBodyEvent extends Equatable {
+  const ChapterPageBodyEvent();
+
+  @override
+  List<Object> get props => [];
+}

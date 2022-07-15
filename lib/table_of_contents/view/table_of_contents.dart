@@ -27,7 +27,7 @@ class TableOfContentsPage extends StatelessWidget {
       body: ListView(
           children: context.select(
         (TableOfContentsBloc bloc) => bloc.chapters
-            .map((e) => ChapterCard(name: e.name, num: e.num, chapterID: e.id, chapterOrderNum: e.orderNum,))
+            .map((e) => ChapterCard(name: e.name, num: e.num, chapterID: e.id, chapterOrderNum: e.orderNum,totalChapters: bloc.chapters.length,))
             .toList(),
       )),
     );
@@ -42,17 +42,18 @@ class ChapterCard extends StatelessWidget {
       required this.name,
       required this.num,
       required this.chapterOrderNum,
+      required this.totalChapters,
       required this.chapterID})
       : super(key: key);
   final String name, num;
-  final int chapterID, chapterOrderNum;
+  final int chapterID, chapterOrderNum, totalChapters;
 
 // TODO user customizable font (size and font family)
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/paragraph', arguments: ParagraphArguments(name: name, num: num, chapterID: chapterID, chapterOrderNum: chapterOrderNum));
+        Navigator.pushNamed(context, '/paragraph', arguments: ParagraphArguments( chapterOrderNum: chapterOrderNum, totalChapters: totalChapters));
       },
       child: Card(
         color: Color(0XFFFAFAFA),

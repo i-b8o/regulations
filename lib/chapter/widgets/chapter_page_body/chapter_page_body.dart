@@ -1,51 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:regulation/app/app.dart';
-
-import 'package:regulation/paragraph/bloc/paragraph_bloc.dart';
+import 'package:regulation/chapter/widgets/chapter_page_body/bloc/chapter_page_body_bloc.dart';
 import 'package:regulation_api/regulation_api.dart';
 import 'package:regulation_repository/regulation_repository.dart';
 
-import '../widgets/paragraph_app_bar.dart';
-import '../widgets/paragraph_card.dart';
+import 'paragraph_card.dart';
 
-class ParagraphPage extends StatelessWidget {
-  const ParagraphPage({Key? key, required this.paragraphArguments})
+class ChapterPageBody extends StatelessWidget {
+  const ChapterPageBody({Key? key, required this.chapterOrderNum})
       : super(key: key);
-  final ParagraphArguments paragraphArguments;
+  final int chapterOrderNum;
 
   ParagraphCard _buildParagraphCard(Paragraph paragraph) {
     return ParagraphCard(paragraph: paragraph);
   }
 
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => ParagraphBloc(
-          arguments: paragraphArguments,
+      create: (context) => ChapterPageBodyBloc(
+          chapterOrderNum: chapterOrderNum,
           regulationRepository: context.read<RegulationRepository>()),
-      child: BlocBuilder<ParagraphBloc, ParagraphState>(
+      child: BlocBuilder<ChapterPageBodyBloc, ChapterPageBodyState>(
         builder: (context, state) {
-          if (state is ParagraphInitial) {
+                      
+          if (state is StateChapterPageBodyInitial){
             List<Paragraph> paragraphs = state.paragraphs;
-            int chapterOrderNum = state.chapterOrderNum;
-            int totalChapters = state.totalChapters;
-            return Scaffold(
-              backgroundColor: Color(0XFFFAFAFA),
-              appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(60.0),
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).padding.top,
-                    ),
-                    child: Container(
-                      child: ParagraphAppBar(chapterOrderNum: chapterOrderNum, totalChapters: totalChapters),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFE2E4E7)),
-                      ),
-                    ),
-                  )),
-              body: ListView.builder(
+            return ListView.builder(
                 itemCount: paragraphs.length,
                 itemBuilder: (BuildContext context, int index) {
                   if (index == 0) {
@@ -87,12 +69,12 @@ class ParagraphPage extends StatelessWidget {
                             children: [
                               IconButton(
                                   onPressed: () {
-                                    print("pressed prev");
+                                    
                                   },
                                   icon: Icon(Icons.arrow_back_ios)),
                               IconButton(
                                   onPressed: () {
-                                    print("pressed prev");
+                                    
                                   },
                                   icon: Icon(Icons.arrow_forward_ios))
                             ],
@@ -104,16 +86,11 @@ class ParagraphPage extends StatelessWidget {
                   }
                   return _buildParagraphCard(paragraphs[index]);
                 },
-              ),
-         
-            );
+              );
           }
-          return Center(
-            child: Text("not"),
-          );
+          return Center(child: Text("no"),);
         },
       ),
     );
   }
 }
-
