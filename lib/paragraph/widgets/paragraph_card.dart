@@ -6,9 +6,8 @@ import 'package:regulation_api/regulation_api.dart';
 enum ParagraphClass { right, center, indent, none }
 
 class ParagraphCard extends StatelessWidget {
-  const ParagraphCard({Key? key, required this.paragraph, required this.isLast}) : super(key: key);
+  const ParagraphCard({Key? key, required this.paragraph,}) : super(key: key);
   final Paragraph paragraph;
-  final bool isLast;
   
 
   @override
@@ -30,7 +29,7 @@ class ParagraphCard extends StatelessWidget {
     return Card(
       color: Color(0XFFFAFAFA),
       margin: EdgeInsets.zero,
-      child: pClass == ParagraphClass.indent ? SizedBox(height: 15,) : isLast ? buildLastCard(pClass) : buildCard(pClass),
+      child: pClass == ParagraphClass.indent ? SizedBox(height: 15,) :  buildCard(pClass),
     );
   }
 
@@ -65,37 +64,37 @@ class ParagraphCard extends StatelessWidget {
                 : ParagraphText(paragraph: paragraph, pClass: pClass,));
   }
 
-  Container buildLastCard(ParagraphClass pClass) {
+  // Container buildLastCard(ParagraphClass pClass) {
 
-    return Container(
-        alignment: Alignment.centerLeft,
-        padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: pClass == ParagraphClass.none ? 16.0 : 2.0),
-        child: paragraph.isTable
-            ? SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Column(
-                  children: [
-                    ParagraphTable(paragraph: paragraph),
-                    SizedBox(height: 25,)
-                  ],
-                ))
-            : paragraph.isHTML
-                ? Column(
-                  children: [
-                    HtmlWidget(
-                      paragraph.content,
-                      customStylesBuilder: pClass == ParagraphClass.none ? null :  (element) {return { 'text-align': pClass == ParagraphClass.right ? 'right' : 'center'};},
-                      ),
-                      SizedBox(height: 25,)
-                  ],
-                )
-                : Column(
-                  children: [
-                    ParagraphText(paragraph: paragraph, pClass: pClass,),
-                    SizedBox(height: 25,)
-                  ],
-                ));
-  }
+  //   return Container(
+  //       alignment: Alignment.centerLeft,
+  //       padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: pClass == ParagraphClass.none ? 16.0 : 2.0),
+  //       child: paragraph.isTable
+  //           ? SingleChildScrollView(
+  //               scrollDirection: Axis.horizontal,
+  //               child: Column(
+  //                 children: [
+  //                   ParagraphTable(paragraph: paragraph),
+  //                   SizedBox(height: 25,)
+  //                 ],
+  //               ))
+  //           : paragraph.isHTML
+  //               ? Column(
+  //                 children: [
+  //                   HtmlWidget(
+  //                     paragraph.content,
+  //                     customStylesBuilder: pClass == ParagraphClass.none ? null :  (element) {return { 'text-align': pClass == ParagraphClass.right ? 'right' : 'center'};},
+  //                     ),
+  //                     SizedBox(height: 25,)
+  //                 ],
+  //               )
+  //               : Column(
+  //                 children: [
+  //                   ParagraphText(paragraph: paragraph, pClass: pClass,),
+  //                   SizedBox(height: 25,)
+  //                 ],
+  //               ));
+  // }
 }
 
 class ParagraphText extends StatelessWidget {

@@ -21,6 +21,14 @@ class App extends StatelessWidget {
   }
 }
 
+class ParagraphArguments {
+  final String name,num;
+  final int chapterID;
+
+  ParagraphArguments({required this.name, required this.num, required this.chapterID});
+
+}
+
 class AppView extends StatelessWidget {
   const AppView({Key? key}) : super(key: key);
 
@@ -44,7 +52,7 @@ class AppView extends StatelessWidget {
           '/buy': (context) => One(),
           '/tableOfContents': (context) => (TableOfContentsPage()),
           '/paragraph': (context) => ParagraphPage(
-                id: ModalRoute.of(context)!.settings.arguments as int,
+                paragraphArguments: ModalRoute.of(context)!.settings.arguments as ParagraphArguments,
               )
         },
         initialRoute: '/',

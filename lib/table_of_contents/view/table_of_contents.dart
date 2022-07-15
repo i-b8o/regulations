@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:regulation/app/app.dart';
 import 'package:regulation/table_of_contents/bloc/table_of_contents_bloc.dart';
 import 'package:provider/provider.dart';
 import '../widgets/widgets.dart';
@@ -33,6 +34,8 @@ class TableOfContentsPage extends StatelessWidget {
   }
 }
 
+
+
 class ChapterCard extends StatelessWidget {
   const ChapterCard(
       {Key? key,
@@ -48,7 +51,7 @@ class ChapterCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/paragraph', arguments: chapterID);
+        Navigator.pushNamed(context, '/paragraph', arguments: ParagraphArguments(name: name, num: num, chapterID: chapterID));
       },
       child: Card(
         color: Color(0XFFFAFAFA),
