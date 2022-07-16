@@ -10,6 +10,9 @@ class ParagraphAppBar extends StatelessWidget {
   final int totalChapters;
   final TextEditingController controller;
   final PageController pageController;
+  
+  // void _pageNumValidation;
+
   @override
   Widget build(BuildContext context) {
     Color? foregroundColor = Theme.of(context).appBarTheme.foregroundColor;
@@ -58,10 +61,10 @@ class ParagraphAppBar extends StatelessWidget {
                         ));
                         return;
                       }
-                      pageNum++;
-                      pageController.animateToPage(pageNum,
+                      
+                      pageController.animateToPage(pageNum-1,
                           duration: const Duration(seconds: 1),
-                          curve: Curves.linear);
+                          curve: Curves.easeOut);
                     },
                     controller: controller,
                     keyboardType: TextInputType.number,
