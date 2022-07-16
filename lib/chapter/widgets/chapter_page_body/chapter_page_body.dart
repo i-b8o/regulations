@@ -30,59 +30,66 @@ class ChapterPageBody extends StatelessWidget {
       itemCount: paragraphs.length,
       itemBuilder: (BuildContext context, int index) {
         if (index == 0) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Padding(
-                padding: paragraphs[index].paragraphClass == "align_right"
-                    ? EdgeInsets.all(25.0)
-                    : EdgeInsets.only(top: 50.0, left: 8.0, right: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Flexible(
-                        child: Text(
-                      header,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 17.0),
-                    )),
-                  ],
+          return Container(
+            color:  Color(0XFFFAFAFA),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: paragraphs[index].paragraphClass == "align_right"
+                      ? EdgeInsets.all(25.0)
+                      : EdgeInsets.only(top: 50.0, left: 8.0, right: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                          child: Text(
+                        header,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 17.0),
+                      )),
+                    ],
+                  ),
                 ),
-              ),
-              _buildParagraphCard(paragraphs[index])
-            ],
+                _buildParagraphCard(paragraphs[index])
+              ],
+            ),
           );
         } else if (index == (paragraphs.length - 1)) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildParagraphCard(paragraphs[index]),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    !first ? IconButton(
-                        onPressed: () {
-                          pageController.previousPage(
-                              duration: const Duration(seconds: 1),
-                              curve: Curves.ease);
-                        },
-                        icon: Icon(Icons.arrow_back_ios)) : Container(),
-                    !last ? IconButton(
-                        onPressed: () {
-                          pageController.nextPage(
-                              duration: const Duration(seconds: 1),
-                              curve: Curves.ease);
-                        },
-                        icon: Icon(Icons.arrow_forward_ios)) : Container()
-                  ],
+          return Container(
+            color:  Color(0XFFFAFAFA),
+            child: Column(
+              
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildParagraphCard(paragraphs[index]),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      !first ? IconButton(
+                          onPressed: () {
+                            pageController.previousPage(
+                                duration: const Duration(seconds: 1),
+                                curve: Curves.ease);
+                          },
+                          icon: Icon(Icons.arrow_back_ios)) : Container(),
+                      !last ? IconButton(
+                          onPressed: () {
+                            pageController.nextPage(
+                                duration: const Duration(seconds: 1),
+                                curve: Curves.ease);
+                          },
+                          icon: Icon(Icons.arrow_forward_ios)) : Container()
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(height: 25)
-            ],
+                SizedBox(height: 25)
+              ],
+            ),
           );
         }
         return _buildParagraphCard(paragraphs[index]);
