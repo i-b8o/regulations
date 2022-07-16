@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:regulation/chapter/widgets/chapter_page_body/chapter_page_body.dart';
+import '../widgets/chapter_page_body/chapter_page_body.dart';
 import 'package:regulation_repository/regulation_repository.dart';
 
 import '../../app/app.dart';

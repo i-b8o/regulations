@@ -6,7 +6,7 @@ class One extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("One"),
+      child: Text('One'),
     );
   }
 }

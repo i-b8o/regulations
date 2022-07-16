@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:regulation/constants.dart';
+import '../../../constants.dart';
 import 'package:regulation_api/regulation_api.dart';
 
 import 'paragraph_card.dart';

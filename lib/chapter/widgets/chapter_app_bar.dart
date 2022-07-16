@@ -11,8 +11,6 @@ class ParagraphAppBar extends StatelessWidget {
   final TextEditingController controller;
   final PageController pageController;
 
-  // void _pageNumValidation;
-
   @override
   Widget build(BuildContext context) {
     Color? foregroundColor = Theme.of(context).appBarTheme.foregroundColor;
@@ -38,7 +36,7 @@ class ParagraphAppBar extends StatelessWidget {
                 int? pageNum = int.tryParse(controller.text);
                 if (pageNum == 1) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Это первая страница!'),
+                    content: const Text('Это первая страница!'),
                   ));
                   return;
                 }

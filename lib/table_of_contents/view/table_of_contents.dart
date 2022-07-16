@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:regulation/app/app.dart';
-import 'package:regulation/constants.dart';
-import 'package:regulation/table_of_contents/bloc/table_of_contents_bloc.dart';
+import '../../app/app.dart';
+import '../../constants.dart';
+import '../bloc/table_of_contents_bloc.dart';
 import 'package:provider/provider.dart';
 import '../widgets/widgets.dart';
 

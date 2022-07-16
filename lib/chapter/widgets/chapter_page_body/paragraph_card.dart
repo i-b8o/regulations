@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:regulation/constants.dart';
+import '../../../constants.dart';
 
 import 'package:regulation_api/regulation_api.dart';
 
@@ -21,13 +21,13 @@ class ParagraphCard extends StatelessWidget {
   Widget build(BuildContext context) {
     ParagraphClass pClass;
     switch (paragraph.paragraphClass) {
-      case "align_right": 
+      case 'align_right': 
         pClass = ParagraphClass.right;
         break;
-      case "align_center":
+      case 'align_center':
         pClass = ParagraphClass.center;
         break;
-      case "indent":
+      case 'indent':
         pClass = ParagraphClass.indent;
         break;
       default:

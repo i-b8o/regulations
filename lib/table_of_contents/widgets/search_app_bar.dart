@@ -46,7 +46,7 @@ class SearchAppBar extends StatelessWidget {
                     borderSide:
                         BorderSide(color: Theme.of(context).primaryColor)),
                 isDense: true,
-                hintText: "Поиск",
+                hintText: 'Поиск',
               ),
               style: TextStyle(
                 fontSize: 15.0,

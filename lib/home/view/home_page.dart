@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:regulation/home/home.dart';
-import 'package:regulation/table_of_contents/view/view.dart';
+import '../home.dart';
+import '../../table_of_contents/view/view.dart';
 
 import '../../one/one.dart';
 
