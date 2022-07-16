@@ -70,8 +70,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/icon.png
-    - assets/images/icon-1.png
+    - assets/images/table.png
+    # - assets/images/icon-1.png
 
   fonts:
     - family: Verdana

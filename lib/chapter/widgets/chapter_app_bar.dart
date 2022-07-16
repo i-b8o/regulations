@@ -93,6 +93,7 @@ class ParagraphAppBar extends StatelessWidget {
                   TextSpan(
                     text: '$totalChapters',
                     style: TextStyle(
+                      // TODO make constant
                         color: Color(0XFF3B4C61),
                         fontSize: 18,
                         fontWeight: FontWeight.w500),
@@ -116,6 +117,7 @@ class ParagraphAppBar extends StatelessWidget {
               icon: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
+                // TODO make const
                 color: Color(0XFF447FEB),
               ),
             )

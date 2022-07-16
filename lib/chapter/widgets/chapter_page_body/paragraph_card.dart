@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:regulation/chapter/widgets/chapter_page_body/paragraph_nft.dart';
 import '../../../constants.dart';
 
 import 'package:regulation_api/regulation_api.dart';
@@ -46,24 +47,9 @@ class ParagraphCard extends StatelessWidget {
         alignment: Alignment.centerLeft,
         padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: pClass == ParagraphClass.none ? 16.0 : 2.0),
         child: paragraph.isNFT ?
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: HtmlWidget(
-            paragraph.content,
-            customStylesBuilder: (element) => {
-            'font-family': 'Courier New,"Monospace"',
-            'white-space': 'pre',
-            'font-size': '17.5px',
-            'letter-spacing': '0',
-            'line-height': '5px',
-            'font-weight': '500',
-          },),
-          
-        ) :
+        ParagraphNFT(paragraph: paragraph) :
         paragraph.isTable
-            ? SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: ParagraphTable(paragraph: paragraph))
+            ? ParagraphTable(paragraph: paragraph)
             : paragraph.isHTML
                 ? HtmlWidget(
                     paragraph.content,

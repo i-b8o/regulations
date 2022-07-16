@@ -5,7 +5,7 @@ import 'package:regulation_api/regulation_api.dart';
 import 'paragraph_card.dart';
 
 class ChapterPageBody extends StatelessWidget {
-  const ChapterPageBody({
+  ChapterPageBody({
     Key? key,
     required this.header,
     required this.totalChapters,
@@ -19,6 +19,7 @@ class ChapterPageBody extends StatelessWidget {
 
   final PageController pageController;
   final List<Paragraph> paragraphs;
+  final ScrollController _controller = ScrollController();
 
   ParagraphCard _buildParagraphCard(Paragraph paragraph) {
     return ParagraphCard(paragraph: paragraph);
@@ -76,14 +77,14 @@ class ChapterPageBody extends StatelessWidget {
                                 duration: const Duration(seconds: 1),
                                 curve: Curves.ease);
                           },
-                          icon: Icon(Icons.arrow_back_ios)) : Container(),
+                          icon: Icon(Icons.arrow_back_ios, color: Color(0XFF447FEB),)) : Container(),
                       !last ? IconButton(
                           onPressed: () {
                             pageController.nextPage(
                                 duration: const Duration(seconds: 1),
                                 curve: Curves.ease);
                           },
-                          icon: Icon(Icons.arrow_forward_ios)) : Container()
+                          icon: Icon(Icons.arrow_forward_ios, color: Color(0XFF447FEB),)) : Container()
                     ],
                   ),
                 ),
