@@ -27,12 +27,13 @@ class ChapterPage extends StatelessWidget {
       ),
       child: Scaffold(
           appBar: PreferredSize(
-              preferredSize: Size.fromHeight(150.0),
+              preferredSize: Size.fromHeight(64.0),
               child: Padding(
                 padding: EdgeInsets.only(
                   top: MediaQuery.of(context).padding.top,
                 ),
                 child: Container(
+                  height: 64.0,
                   child: BlocBuilder<ChapterPageBloc, ChapterPageState>(
                     buildWhen: (previousState, state) {
                       return previousState.chapterOrderNum !=
