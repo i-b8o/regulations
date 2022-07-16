@@ -43,12 +43,12 @@ class ParagraphAppBar extends StatelessWidget {
                 width: 30,
                 child: TextFormField(
                     onEditingComplete: () {
+                      FocusScope.of(context).unfocus();
                       int pageNum = int.tryParse(controller.text) ?? 1;
                       if (pageNum > totalChapters) {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text(
                               '${pageNum}-ой страницы не существует, всего $totalChapters страниц!'),
-                            
                         ));
                         return;
                       } else if (pageNum < 1) {
