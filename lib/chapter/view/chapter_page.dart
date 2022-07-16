@@ -13,6 +13,7 @@ class ChapterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(paragraphArguments.chapterOrderNum);
     return BlocProvider(
       create: (context) => ChapterPageBloc(
           pageController:
@@ -38,6 +39,8 @@ class ChapterPage extends StatelessWidget {
                       ),
                     )),
                 body: PageView.builder(
+                  controller: state.pageController,
+                    itemCount: paragraphArguments.totalChapters,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return ChapterPageBody(chapterOrderNum: index + 1);
