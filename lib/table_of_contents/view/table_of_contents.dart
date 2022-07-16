@@ -8,7 +8,7 @@ import '../widgets/widgets.dart';
 
 class TableOfContentsPage extends StatelessWidget {
   const TableOfContentsPage({Key? key}) : super(key: key);
-
+// TODO check tap on header (name of regulation is now wrong)
   @override
   Widget build(BuildContext context) {
     return Scaffold(
