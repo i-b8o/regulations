@@ -38,8 +38,10 @@ class ChapterPage extends StatelessWidget {
                     builder: (context, state) {
                       print("AAAAAAAAAAAAAAAAAA ${state.chapterOrderNum}");
                       return ParagraphAppBar(
-                          controller: state.appBarOrderNumController,
-                          totalChapters: paragraphArguments.totalChapters);
+                        controller: state.appBarOrderNumController,
+                        totalChapters: paragraphArguments.totalChapters,
+                        pageController: state.pageController,
+                      );
                     },
                   ),
                   decoration: BoxDecoration(

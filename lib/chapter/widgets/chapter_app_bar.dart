@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 class ParagraphAppBar extends StatelessWidget {
   const ParagraphAppBar({
     Key? key,
-    required this.totalChapters, required this.controller,
+    required this.totalChapters,
+    required this.controller,
+    required this.pageController,
   }) : super(key: key);
   final int totalChapters;
- final TextEditingController controller;
+  final TextEditingController controller;
+  final PageController pageController;
   @override
   Widget build(BuildContext context) {
     Color? foregroundColor = Theme.of(context).appBarTheme.foregroundColor;
@@ -14,7 +17,6 @@ class ParagraphAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        // AppBarBack(foregroundColor: foregroundColor),
         IconButton(
           onPressed: () {},
           icon: Icon(
@@ -27,9 +29,8 @@ class ParagraphAppBar extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {
-                // controller.previousPage(
-                //     duration: const Duration(seconds: 1),
-                //     curve: Curves.linear);
+                pageController.previousPage(
+                    duration: const Duration(seconds: 1), curve: Curves.ease);
               },
               icon: Icon(
                 Icons.arrow_back_ios,
@@ -41,9 +42,29 @@ class ParagraphAppBar extends StatelessWidget {
                 height: 30,
                 width: 30,
                 child: TextFormField(
-                  controller: controller,
+                    onEditingComplete: () {
+                      int pageNum = int.tryParse(controller.text) ?? 1;
+                      if (pageNum > totalChapters) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                              '${pageNum}-ой страницы не существует, всего $totalChapters страниц!'),
+                            
+                        ));
+                        return;
+                      } else if (pageNum < 1) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content:
+                              Text('${pageNum}-ой страницы не существует!'),
+                        ));
+                        return;
+                      }
+                      pageNum++;
+                      pageController.animateToPage(pageNum,
+                          duration: const Duration(seconds: 1),
+                          curve: Curves.linear);
+                    },
+                    controller: controller,
                     keyboardType: TextInputType.number,
-                    
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.zero,
@@ -68,9 +89,8 @@ class ParagraphAppBar extends StatelessWidget {
                 ])),
             IconButton(
               onPressed: () {
-                // controller.nextPage(
-                //     duration: const Duration(seconds: 1),
-                //     curve: Curves.easeInOut);
+                pageController.nextPage(
+                    duration: const Duration(seconds: 1), curve: Curves.ease);
               },
               icon: Icon(
                 Icons.arrow_forward_ios,
