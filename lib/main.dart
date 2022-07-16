@@ -8,6 +8,8 @@ import 'bootstrap.dart';
 // TODO you can listen it in car
 // TODO links in paragpraphs
 // TODO drop links from unknown documents
+// TODO make editable
+// TODO make tts
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(

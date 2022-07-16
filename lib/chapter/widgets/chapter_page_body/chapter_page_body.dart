@@ -11,7 +11,9 @@ class ChapterPageBody extends StatelessWidget {
     required this.totalChapters,
     required this.pageController,
     required this.paragraphs,
-    required int chapterOrderNum, required this.first, required this.last,
+    required int chapterOrderNum,
+    required this.first,
+    required this.last,
   }) : super(key: key);
   final String header;
   final int totalChapters;
@@ -19,8 +21,8 @@ class ChapterPageBody extends StatelessWidget {
 
   final PageController pageController;
   final List<Paragraph> paragraphs;
-  final ScrollController _controller = ScrollController();
-
+  
+// TODO scroll to table paragraph after table collapse
   ParagraphCard _buildParagraphCard(Paragraph paragraph) {
     return ParagraphCard(paragraph: paragraph);
   }
@@ -32,7 +34,7 @@ class ChapterPageBody extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         if (index == 0) {
           return Container(
-            color:  Constants.bodyColor,
+            color: Constants.bodyColor,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -59,9 +61,8 @@ class ChapterPageBody extends StatelessWidget {
           );
         } else if (index == (paragraphs.length - 1)) {
           return Container(
-            color:  Constants.bodyColor,
+            color: Constants.bodyColor,
             child: Column(
-              
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _buildParagraphCard(paragraphs[index]),
@@ -71,20 +72,30 @@ class ChapterPageBody extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      !first ? IconButton(
-                          onPressed: () {
-                            pageController.previousPage(
-                                duration: const Duration(seconds: 1),
-                                curve: Curves.ease);
-                          },
-                          icon: Icon(Icons.arrow_back_ios, color: Color(0XFF447FEB),)) : Container(),
-                      !last ? IconButton(
-                          onPressed: () {
-                            pageController.nextPage(
-                                duration: const Duration(seconds: 1),
-                                curve: Curves.ease);
-                          },
-                          icon: Icon(Icons.arrow_forward_ios, color: Color(0XFF447FEB),)) : Container()
+                      !first
+                          ? IconButton(
+                              onPressed: () {
+                                pageController.previousPage(
+                                    duration: const Duration(seconds: 1),
+                                    curve: Curves.ease);
+                              },
+                              icon: Icon(
+                                Icons.arrow_back_ios,
+                                color: Color(0XFF447FEB),
+                              ))
+                          : Container(),
+                      !last
+                          ? IconButton(
+                              onPressed: () {
+                                pageController.nextPage(
+                                    duration: const Duration(seconds: 1),
+                                    curve: Curves.ease);
+                              },
+                              icon: Icon(
+                                Icons.arrow_forward_ios,
+                                color: Color(0XFF447FEB),
+                              ))
+                          : Container()
                     ],
                   ),
                 ),

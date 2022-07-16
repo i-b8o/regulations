@@ -24,6 +24,7 @@ class TableOfContentsAppBar extends StatelessWidget {
         if (state is StateTableOfContentsInitial) {
           return InitAppBAr(
             foregroundColor: foregroundColor,
+            name: state.name,
             title: state.title,
           );
         }

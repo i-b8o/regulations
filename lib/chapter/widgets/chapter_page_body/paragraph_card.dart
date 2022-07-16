@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:regulation/chapter/widgets/chapter_page_body/paragraph_nft.dart';
+import 'paragraph_nft.dart';
 import '../../../constants.dart';
 
 import 'package:regulation_api/regulation_api.dart';

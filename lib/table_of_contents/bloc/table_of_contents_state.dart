@@ -9,8 +9,9 @@ abstract class TableOfContentsState extends Equatable {
 
 class StateTableOfContentsInitial extends TableOfContentsState {
   final String title;
+  final String name;
 
-  StateTableOfContentsInitial(this.title);
+  StateTableOfContentsInitial({required this.title, required this.name});
 }
 
 class StateTableOfContentsSearchTextFieldActivated

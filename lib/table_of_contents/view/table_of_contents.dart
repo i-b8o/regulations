@@ -77,14 +77,14 @@ class ChapterCard extends StatelessWidget {
                   TextSpan(
                       text: num.isEmpty ? '' : '$num. ',
                       style: TextStyle(
-                        color: Color(0XFF3B4C61),
+                        color: Constants.appBarHeaderColor,
                         fontWeight: FontWeight.w600,
                       ),
                       children: [
                         TextSpan(
                           text: name,
                           style: TextStyle(
-                              color: Color(0XFF3B4C61),
+                              color: Constants.appBarHeaderColor,
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Verdana'),
                         ),

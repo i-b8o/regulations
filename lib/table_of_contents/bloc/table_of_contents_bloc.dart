@@ -11,7 +11,8 @@ class TableOfContentsBloc
   TableOfContentsBloc({required RegulationRepository regulationRepository})
       : _regulationRepository = regulationRepository,
         super(StateTableOfContentsInitial(
-            regulationRepository.getRegulationAbbreviation())) {
+            title: regulationRepository.getRegulationAbbreviation(),
+            name: regulationRepository.getRegulationName())) {
     on<EventTableOfContentsInitial>(_onEventTableOfContentsInitial);
     on<EventTableOfContentsSearchTextFieldActivated>(
         _onEventTableOfContentsSearchTextFieldActivated);
@@ -24,9 +25,11 @@ class TableOfContentsBloc
 
   List<ChapterInfo> get chapters => _regulationRepository.getTableOfContents();
 
+  String get regulationName => _regulationRepository.getRegulationName();
+
   void _onEventTableOfContentsInitial(
       EventTableOfContentsInitial event, Emitter<TableOfContentsState> emit) {
-    emit(StateTableOfContentsInitial(regulationAbbreviation));
+    emit(StateTableOfContentsInitial(title: regulationAbbreviation, name: regulationName));
   }
 
   void _onEventTableOfContentsSearchTextFieldActivated(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../constants.dart';
+
 class ParagraphAppBar extends StatelessWidget {
   const ParagraphAppBar({
     Key? key,
@@ -93,8 +95,7 @@ class ParagraphAppBar extends StatelessWidget {
                   TextSpan(
                     text: '$totalChapters',
                     style: TextStyle(
-                      // TODO make constant
-                        color: Color(0XFF3B4C61),
+                        color: Constants.appBarHeaderColor,
                         fontSize: 18,
                         fontWeight: FontWeight.w500),
                   )

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../constants.dart';
 import '../table_of_contents.dart';
 
 class InitAppBAr extends StatelessWidget {
   const InitAppBAr({
     Key? key,
     this.foregroundColor,
-    required this.title,
+    required this.title, required this.name,
   }) : super(key: key);
   final Color? foregroundColor;
-  final String title;
+  final String title, name;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -27,11 +28,18 @@ class InitAppBAr extends StatelessWidget {
           ),
         ),
         // TODO on tap popup message with a full name of a regulation
-        Text(title,
-            style: TextStyle(
-                color: Color(0XFF3B4C61),
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0)),
+        GestureDetector(
+          onTap: () {
+            // String name =context.select((TableOfContentsBloc bloc) => bloc.regulationName);
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(name)));
+          },
+          child: Text(title,
+              style: TextStyle(
+                  color: Constants.appBarHeaderColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0)),
+        ),
         IconButton(
           onPressed: () {
             context

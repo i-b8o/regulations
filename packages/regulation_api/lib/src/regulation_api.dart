@@ -15,6 +15,8 @@ abstract class RegulationApi {
   
   String getChapterNameByOrderNum(int chapterOrderNum);
 
+  String getRegulationName();
+
   // Future<List<Paragraph>> getParagraphs();
 
   // Future<void> saveParagraph(Paragraph paragraph);

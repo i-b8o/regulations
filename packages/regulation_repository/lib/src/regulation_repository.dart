@@ -19,4 +19,6 @@ class RegulationRepository {
 
   String getChapterNameByOrderNum(int chapterOrderNum) => _regulationApi.getChapterNameByOrderNum(chapterOrderNum);
 
+  String getRegulationName() => _regulationApi.getRegulationName();
+
 }

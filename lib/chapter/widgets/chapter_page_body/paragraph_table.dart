@@ -30,6 +30,7 @@ class _ParagraphTableState extends State<ParagraphTable> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Image.asset(
+                  // TODO make svg
                   "assets/images/table.png",
                   width: size.width < size.height
                       ? size.width * 0.2
