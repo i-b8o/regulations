@@ -6,3 +6,9 @@ abstract class ChapterPageEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+// TODO const for every bloc entity
+class EventChapterPageChanged extends ChapterPageEvent {
+  final int chapterOrderNum;
+  const EventChapterPageChanged(this.chapterOrderNum);
+}

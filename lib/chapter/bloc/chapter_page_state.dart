@@ -1,14 +1,33 @@
 part of 'chapter_page_bloc.dart';
 
-abstract class ChapterPageState extends Equatable {
-  const ChapterPageState();
-  
-  @override
-  List<Object> get props => [];
-}
-
-class StateChapterPageInitial extends ChapterPageState {
+class ChapterPageState extends Equatable {
+  final TextEditingController appBarOrderNumController;
   final PageController pageController;
+  final int chapterOrderNum;
 
-  StateChapterPageInitial(this.pageController);
+  ChapterPageState(
+      {required this.appBarOrderNumController,
+      required this.pageController,
+      required this.chapterOrderNum});
+
+  @override
+  List<Object> get props =>
+      [pageController, chapterOrderNum, appBarOrderNumController];
 }
+
+// class StateChapterPageInitial extends ChapterPageState {
+//   final PageController pageController;
+//   final int chapterOrderNum;
+//   StateChapterPageInitial(
+//       {required this.pageController, required this.chapterOrderNum})
+//       : super(pageController: pageController, chapterOrderNum: chapterOrderNum);
+// }
+
+// class StateChapterPageChanged extends ChapterPageState {
+//   final PageController pageController;
+//   final int chapterOrderNum;
+
+//   StateChapterPageChanged(
+//       {required this.pageController, required this.chapterOrderNum})
+//       : super(pageController: pageController, chapterOrderNum: chapterOrderNum);
+// }

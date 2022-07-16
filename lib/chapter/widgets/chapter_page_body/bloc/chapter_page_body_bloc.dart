@@ -6,6 +6,7 @@ import 'package:regulation_repository/regulation_repository.dart';
 part 'chapter_page_body_event.dart';
 part 'chapter_page_body_state.dart';
 
+// TODO Loading state
 class ChapterPageBodyBloc
     extends Bloc<ChapterPageBodyEvent, ChapterPageBodyState> {
   ChapterPageBodyBloc({
