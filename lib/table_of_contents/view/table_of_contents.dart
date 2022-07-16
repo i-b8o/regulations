@@ -58,7 +58,7 @@ class ChapterCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/paragraph',
-            arguments: ParagraphArguments(
+            arguments: ChapterArguments(
                 chapterOrderNum: chapterOrderNum,
                 totalChapters: totalChapters));
       },

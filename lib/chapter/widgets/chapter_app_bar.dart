@@ -10,7 +10,7 @@ class ParagraphAppBar extends StatelessWidget {
   final int totalChapters;
   final TextEditingController controller;
   final PageController pageController;
-  
+
   // void _pageNumValidation;
 
   @override
@@ -32,6 +32,13 @@ class ParagraphAppBar extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {
+                 int? pageNum = int.tryParse(controller.text);
+                 if (pageNum == 1) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Это первая страница!'),
+                  ));
+                  return;
+                }
                 pageController.previousPage(
                     duration: const Duration(seconds: 1), curve: Curves.ease);
               },
@@ -61,8 +68,8 @@ class ParagraphAppBar extends StatelessWidget {
                         ));
                         return;
                       }
-                      
-                      pageController.animateToPage(pageNum-1,
+
+                      pageController.animateToPage(pageNum - 1,
                           duration: const Duration(seconds: 1),
                           curve: Curves.easeOut);
                     },
@@ -92,6 +99,16 @@ class ParagraphAppBar extends StatelessWidget {
                 ])),
             IconButton(
               onPressed: () {
+                int? pageNum = int.tryParse(controller.text);
+                if (pageNum == null) {
+                  return;
+                }
+                if (pageNum == totalChapters) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Это последняя страница!'),
+                  ));
+                  return;
+                }
                 pageController.nextPage(
                     duration: const Duration(seconds: 1), curve: Curves.ease);
               },

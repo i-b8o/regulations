@@ -11,9 +11,9 @@ abstract class RegulationApi {
 
   int countChapters();
 
-  List<Paragraph> getParagraphsByChapterOrderNum(int chapterID);
+  List<Paragraph> getParagraphsByChapterOrderNum(int chapterOrderNum);
   
-  String getChapterNameByOrderNum(int chapterID);
+  String getChapterNameByOrderNum(int chapterOrderNum);
 
   // Future<List<Paragraph>> getParagraphs();
 

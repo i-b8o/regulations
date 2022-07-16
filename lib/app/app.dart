@@ -22,11 +22,11 @@ class App extends StatelessWidget {
   }
 }
 
-class ParagraphArguments {
+class ChapterArguments {
   
   final int totalChapters, chapterOrderNum;
 
-  ParagraphArguments({ required this.totalChapters, required this.chapterOrderNum});
+  ChapterArguments({ required this.totalChapters, required this.chapterOrderNum});
 
 }
 
@@ -53,7 +53,7 @@ class AppView extends StatelessWidget {
           '/buy': (context) => One(),
           '/tableOfContents': (context) => (TableOfContentsPage()),
           '/paragraph': (context) => ChapterPage(
-                paragraphArguments: ModalRoute.of(context)!.settings.arguments as ParagraphArguments,
+                chapterArguments: ModalRoute.of(context)!.settings.arguments as ChapterArguments,
               )
         },
         initialRoute: '/',
