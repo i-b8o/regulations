@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:regulation_api/regulation_api.dart';
 
+import '../../../constants.dart';
+
 class ParagraphTable extends StatefulWidget {
   const ParagraphTable({
     Key? key,
@@ -44,7 +46,7 @@ class _ParagraphTableState extends State<ParagraphTable> {
                   "Нажмите, чтобы развернуть. Прокручивайте таблицу горизонтально.",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Color(0XFF447FEB)),
+                      color: Constants.btnColor),
                 ))
               ],
             ),
@@ -89,11 +91,11 @@ class _ParagraphTableState extends State<ParagraphTable> {
                         children: [
                           Text("Свернуть",
                               style: TextStyle(
-                                  color: Color(0XFF447FEB))),
+                                  color: Constants.btnColor)),
                           Icon(
                             Icons.arrow_drop_up,
                             color:
-                                Color(0XFF447FEB),
+                                Constants.btnColor,
                           )
                         ],
                       )),

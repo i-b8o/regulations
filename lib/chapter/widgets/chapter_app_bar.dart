@@ -48,7 +48,7 @@ class ParagraphAppBar extends StatelessWidget {
               icon: Icon(
                 Icons.arrow_back_ios,
                 size: 20,
-                color: Color(0XFF447FEB),
+                color: Constants.btnColor,
               ),
             ),
             Container(
@@ -118,8 +118,8 @@ class ParagraphAppBar extends StatelessWidget {
               icon: Icon(
                 Icons.arrow_forward_ios,
                 size: 20,
-                // TODO make const
-                color: Color(0XFF447FEB),
+                
+                color: Constants.btnColor,
               ),
             )
           ],

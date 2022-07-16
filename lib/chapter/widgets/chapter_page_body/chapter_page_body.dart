@@ -81,7 +81,7 @@ class ChapterPageBody extends StatelessWidget {
                               },
                               icon: Icon(
                                 Icons.arrow_back_ios,
-                                color: Color(0XFF447FEB),
+                                color: Constants.btnColor,
                               ))
                           : Container(),
                       !last
@@ -93,7 +93,7 @@ class ChapterPageBody extends StatelessWidget {
                               },
                               icon: Icon(
                                 Icons.arrow_forward_ios,
-                                color: Color(0XFF447FEB),
+                                color: Constants.btnColor,
                               ))
                           : Container()
                     ],
