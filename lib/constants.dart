@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart';
+
 class Constants {
-  static const String title = "ПОТЭУ-903н-2020";
+  static const Color bodyColor = Color(0XFFFAFAFA);
 }

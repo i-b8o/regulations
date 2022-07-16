@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:regulation/constants.dart';
 import 'package:regulation_api/regulation_api.dart';
 
 import 'paragraph_card.dart';
@@ -25,13 +26,12 @@ class ChapterPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // List<Paragraph> paragraphs = state.paragraphs;
     return ListView.builder(
       itemCount: paragraphs.length,
       itemBuilder: (BuildContext context, int index) {
         if (index == 0) {
           return Container(
-            color:  Color(0XFFFAFAFA),
+            color:  Constants.bodyColor,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -58,7 +58,7 @@ class ChapterPageBody extends StatelessWidget {
           );
         } else if (index == (paragraphs.length - 1)) {
           return Container(
-            color:  Color(0XFFFAFAFA),
+            color:  Constants.bodyColor,
             child: Column(
               
               mainAxisAlignment: MainAxisAlignment.center,

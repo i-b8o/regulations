@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:regulation/constants.dart';
 
 import 'package:regulation_api/regulation_api.dart';
 
@@ -34,7 +35,7 @@ class ParagraphCard extends StatelessWidget {
     };
     return Card(
       shadowColor : Colors.transparent,
-      color: Color(0XFFFAFAFA),
+      color: Constants.bodyColor,
       margin: EdgeInsets.zero,
       child: pClass == ParagraphClass.indent ? SizedBox(height: 15,) :  buildCard(pClass),
     );

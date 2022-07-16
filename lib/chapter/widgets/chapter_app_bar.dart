@@ -21,7 +21,10 @@ class ParagraphAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                '/tableOfContents', (Route<dynamic> route) => false);
+          },
           icon: Icon(
             Icons.arrow_back,
             color: foregroundColor,
@@ -32,8 +35,8 @@ class ParagraphAppBar extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {
-                 int? pageNum = int.tryParse(controller.text);
-                 if (pageNum == 1) {
+                int? pageNum = int.tryParse(controller.text);
+                if (pageNum == 1) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text('Это первая страница!'),
                   ));

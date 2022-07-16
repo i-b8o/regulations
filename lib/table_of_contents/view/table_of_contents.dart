@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:regulation/app/app.dart';
+import 'package:regulation/constants.dart';
 import 'package:regulation/table_of_contents/bloc/table_of_contents_bloc.dart';
 import 'package:provider/provider.dart';
 import '../widgets/widgets.dart';
@@ -63,7 +64,7 @@ class ChapterCard extends StatelessWidget {
                 totalChapters: totalChapters));
       },
       child: Card(
-        color: Color(0XFFFAFAFA),
+        color: Constants.bodyColor,
         margin: EdgeInsets.zero,
         shape: const Border(
           bottom:
