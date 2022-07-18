@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../constants.dart';
 import '../widgets/chapter_page_body/chapter_page_body.dart';
 import 'package:regulation_repository/regulation_repository.dart';
 
@@ -24,8 +25,10 @@ class ChapterPage extends StatelessWidget {
           initialPage: chapterArguments.chapterOrderNum - 1,
         ),
         totalChapters: chapterArguments.totalChapters,
+        
       ),
       child: Scaffold(
+          backgroundColor: Constants.bodyColor,
           appBar: PreferredSize(
               preferredSize: Size.fromHeight(64.0),
               child: Padding(
@@ -69,7 +72,7 @@ class ChapterPage extends StatelessWidget {
                         paragraphs: state.paragraphs,
                         totalChapters: state.totalChapters,
                         first: (index + 1) == 1,
-                        last: (index + 1) == state.totalChapters,
+                        last: (index + 1) == state.totalChapters, 
                       ));
             },
           )),

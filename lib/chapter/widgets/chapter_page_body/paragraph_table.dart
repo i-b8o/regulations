@@ -89,14 +89,17 @@ class _ParagraphTableState extends State<ParagraphTable> {
                       },
                       child: Row(
                         children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 2.0),
+                            child: Icon(
+                              Icons.arrow_drop_up,
+                              color:
+                                  Constants.btnColor,
+                            ),
+                          ),
                           Text("Свернуть",
                               style: TextStyle(
-                                  color: Constants.btnColor)),
-                          Icon(
-                            Icons.arrow_drop_up,
-                            color:
-                                Constants.btnColor,
-                          )
+                                  color: Constants.btnColor, fontWeight: FontWeight.w400))
                         ],
                       )),
                 ],

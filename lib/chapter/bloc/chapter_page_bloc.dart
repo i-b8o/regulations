@@ -12,6 +12,7 @@ class ChapterPageBloc extends Bloc<ChapterPageEvent, ChapterPageState> {
       {required RegulationRepository this.regulationRepository,
       required this.totalChapters,
       required this.pageController,
+
       required this.appBarOrderNumController,
       required int chapterOrderNum})
       : super(ChapterPageState(
@@ -22,12 +23,13 @@ class ChapterPageBloc extends Bloc<ChapterPageEvent, ChapterPageState> {
                 .getParagraphsByChapterOrederNum(chapterOrderNum),
             chapterName:
                 regulationRepository.getChapterNameByOrderNum(chapterOrderNum),
-            totalChapters: totalChapters)) {
+            totalChapters: totalChapters, )) {
     on<EventChapterPageChanged>(_onEventChapterPageChanged);
   }
 
   final PageController pageController;
   final TextEditingController appBarOrderNumController;
+  
   final RegulationRepository regulationRepository;
   final int totalChapters;
 

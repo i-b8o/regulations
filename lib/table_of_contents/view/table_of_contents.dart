@@ -61,7 +61,7 @@ class ChapterCard extends StatelessWidget {
                 totalChapters: totalChapters));
       },
       child: Card(
-        color: Constants.bodyColor,
+        // color: Constants.bodyColor,
         margin: EdgeInsets.zero,
         shape: const Border(
           bottom:

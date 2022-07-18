@@ -5,11 +5,13 @@ import 'package:local_storage_regulation_api/local_storage_regulation_api.dart';
 
 import 'bootstrap.dart';
 
-// TODO you can listen it in car
-// TODO links in paragpraphs
+// page 76
+// blank field on bottom of pages 77 ...
 // TODO drop links from unknown documents
+// TODO links in paragpraphs
 // TODO make editable
 // TODO make tts
+// TODO you can listen it in car
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
