@@ -66,6 +66,8 @@ class ChapterPage extends StatelessWidget {
                         .add(EventChapterPageChanged(index + 1));
                   },
                   itemBuilder: (context, index) => ChapterPageBody(
+                    scrollTo: state.paragraphOrderNum,
+                    scrollController: state.scrollController,
                         chapterOrderNum: index + 1,
                         pageController: state.pageController,
                         header: state.chapterName,

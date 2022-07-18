@@ -61,7 +61,7 @@ class ParagraphAppBar extends StatelessWidget {
                       if (pageNum > totalChapters) {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text(
-                              '${pageNum}-ой страницы не существует, всего $totalChapters страниц!'),
+                              '${pageNum}-ой страницы не существует,  в документе всего $totalChapters страниц!'),
                         ));
                         return;
                       } else if (pageNum < 1) {

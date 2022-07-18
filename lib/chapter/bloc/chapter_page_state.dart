@@ -8,9 +8,14 @@ class ChapterPageState extends Equatable {
 
   final String chapterName;
 
+  final ItemScrollController scrollController = ItemScrollController();
+
+  final int paragraphOrderNum;
+
   final List<Paragraph> paragraphs;
 
   ChapterPageState({
+    this.paragraphOrderNum = 0,
     required this.appBarOrderNumController,
     required this.pageController,
     required this.chapterName,

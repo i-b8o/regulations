@@ -1,3 +1,4 @@
+import 'models/go_to.dart';
 import 'models/models.dart';
 
 abstract class RegulationApi {
@@ -16,6 +17,8 @@ abstract class RegulationApi {
   String getChapterNameByOrderNum(int chapterOrderNum);
 
   String getRegulationName();
+  
+  GoTo getGoTo(int id);
 
   // Future<List<Paragraph>> getParagraphs();
 
