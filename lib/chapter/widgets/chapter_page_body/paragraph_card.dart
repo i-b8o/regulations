@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import '../../bloc/chapter_page_bloc.dart';
+import 'bloc/chapter_page_body_bloc.dart';
 import 'paragraph_nft.dart';
 import '../../../constants.dart';
 
@@ -19,8 +20,8 @@ class ParagraphCard extends StatelessWidget {
   }) : super(key: key);
   final Paragraph paragraph;
 
-
-  void goTo(BuildContext context, int id){
+  void goTo(BuildContext context, int id) {
+    context.read<ChapterPageBodyBloc>().add(EventLinkPressed(id));
     context.read<ChapterPageBloc>().add(EventGoToChapter(id: id));
   }
 

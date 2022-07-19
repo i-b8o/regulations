@@ -1,4 +1,3 @@
-import 'models/go_to.dart';
 import 'models/models.dart';
 
 abstract class RegulationApi {
@@ -13,13 +12,12 @@ abstract class RegulationApi {
   int countChapters();
 
   List<Paragraph> getParagraphsByChapterOrderNum(int chapterOrderNum);
-  
+
   String getChapterNameByOrderNum(int chapterOrderNum);
 
   String getRegulationName();
-  
-  GoTo? getGoTo(int id);
 
+  GoTo? getGoTo(int id);
   // Future<List<Paragraph>> getParagraphs();
 
   // Future<void> saveParagraph(Paragraph paragraph);

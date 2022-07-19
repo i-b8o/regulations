@@ -1,4 +1,5 @@
 class Paragraph {
+  final int id;
   final int num;
   final bool isHTML;
   final bool isTable;
@@ -8,7 +9,7 @@ class Paragraph {
   final int chapterID;
 
   const Paragraph(
-      {
+      {required this.id,
       required this.num,
       required this.isHTML,
       required this.isTable,

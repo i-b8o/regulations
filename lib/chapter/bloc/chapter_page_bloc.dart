@@ -55,14 +55,17 @@ class ChapterPageBloc extends Bloc<ChapterPageEvent, StateInitChapterPage> {
   void _onEventGoToChapter(
       EventGoToChapter event, Emitter<StateInitChapterPage> emit) {
     GoTo? gt = regulationRepository.getGoTo(event.id);
-    if (gt == null){
+    if (gt == null) {
       return;
     }
+
     appBarOrderNumController.text = gt.chapterOrderNum.toString();
     List<Paragraph> _paragraphs = regulationRepository
         .getParagraphsByChapterOrederNum(gt.chapterOrderNum);
     String _chapterName =
         regulationRepository.getChapterNameByOrderNum(gt.chapterOrderNum);
+    // List<Link> _links =
+    //     regulationRepository.AllLinksForChapter(gt.chapterOrderNum, 1);
     emit(StateGoTo(
       paragraphOrderNum: gt.paragraphOrderNum,
       appBarOrderNumController: appBarOrderNumController,

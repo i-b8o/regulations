@@ -53,10 +53,9 @@ class LocalStorageRegulationApi extends RegulationApi {
     return Regulation.name;
   }
 
-  // TODO index all links
   GoTo? getGoTo(int id) {
     List<Link> links = AllLinks.links.where((l) => l.id == id).toList();
-    
+
     if (links.isEmpty) {
       return null;
     }

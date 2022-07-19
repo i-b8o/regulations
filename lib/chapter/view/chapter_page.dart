@@ -69,7 +69,7 @@ class ChapterPage extends StatelessWidget {
                       state.pageController
                           .jumpToPage(state.chapterOrderNum - 1);
                     }
-
+                    
                     return ChapterPageBody(
                       scrollTo: state.paragraphOrderNum,
                       chapterOrderNum: state.chapterOrderNum,
@@ -78,7 +78,7 @@ class ChapterPage extends StatelessWidget {
                       paragraphs: state.paragraphs,
                       totalChapters: state.totalChapters,
                       first: (index + 1) == 1,
-                      last: (index + 1) == state.totalChapters,
+                      last: (index + 1) == state.totalChapters, 
                     );
                   });
             },

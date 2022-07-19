@@ -11,15 +11,17 @@ class RegulationRepository {
       _regulationApi.getRegulationAbbreviation();
 
   List<ChapterInfo> getTableOfContents() => _regulationApi.getTableOfContents();
-  
+
   int countChapters() => _regulationApi.countChapters();
 
   List<Paragraph> getParagraphsByChapterOrederNum(int chapterOrderNum) =>
       _regulationApi.getParagraphsByChapterOrderNum(chapterOrderNum);
 
-  String getChapterNameByOrderNum(int chapterOrderNum) => _regulationApi.getChapterNameByOrderNum(chapterOrderNum);
+  String getChapterNameByOrderNum(int chapterOrderNum) =>
+      _regulationApi.getChapterNameByOrderNum(chapterOrderNum);
 
   String getRegulationName() => _regulationApi.getRegulationName();
 
-   GoTo? getGoTo(int id) => _regulationApi.getGoTo(id);
+  GoTo? getGoTo(int id) => _regulationApi.getGoTo(id);
+
 }

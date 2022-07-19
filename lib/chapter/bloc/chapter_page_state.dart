@@ -15,6 +15,7 @@ class StateInitChapterPage extends Equatable {
 
   StateInitChapterPage({
     this.paragraphOrderNum = 0,
+
     required this.appBarOrderNumController,
     required this.pageController,
     required this.chapterName,
@@ -31,6 +32,7 @@ class StateInitChapterPage extends Equatable {
 class StateGoTo extends StateInitChapterPage {
   StateGoTo(
       {required super.paragraphOrderNum,
+
       required super.appBarOrderNumController,
       required super.pageController,
       required super.chapterName,
