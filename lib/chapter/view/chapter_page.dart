@@ -36,7 +36,7 @@ class ChapterPage extends StatelessWidget {
                 ),
                 child: Container(
                   height: 64.0,
-                  child: BlocBuilder<ChapterPageBloc, ChapterPageState>(
+                  child: BlocBuilder<ChapterPageBloc, StateInitChapterPage>(
                     buildWhen: (previousState, state) {
                       return previousState.chapterOrderNum !=
                           state.chapterOrderNum;
@@ -54,7 +54,7 @@ class ChapterPage extends StatelessWidget {
                   ),
                 ),
               )),
-          body: BlocBuilder<ChapterPageBloc, ChapterPageState>(
+          body: BlocBuilder<ChapterPageBloc, StateInitChapterPage>(
             builder: (context, state) {
               return PageView.builder(
                   itemCount: state.totalChapters,
@@ -69,6 +69,7 @@ class ChapterPage extends StatelessWidget {
                       state.pageController
                           .jumpToPage(state.chapterOrderNum - 1);
                     }
+
                     return ChapterPageBody(
                       scrollTo: state.paragraphOrderNum,
                       chapterOrderNum: state.chapterOrderNum,

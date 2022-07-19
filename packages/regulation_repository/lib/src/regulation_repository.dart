@@ -21,5 +21,5 @@ class RegulationRepository {
 
   String getRegulationName() => _regulationApi.getRegulationName();
 
-   GoTo getGoTo(int id) => _regulationApi.getGoTo(id);
+   GoTo? getGoTo(int id) => _regulationApi.getGoTo(id);
 }

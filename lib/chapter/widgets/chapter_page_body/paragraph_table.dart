@@ -28,27 +28,30 @@ class _ParagraphTableState extends State<ParagraphTable> {
                 minimized = false;
               });
             },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Image.asset(
-                  // TODO make svg
-                  "assets/images/table.png",
-                  width: size.width < size.height
-                      ? size.width * 0.2
-                      : size.height * 0.2,
-                  height: size.width < size.height
-                      ? size.width * 0.2
-                      : size.height * 0.2,
-                ),
-                Flexible(
-                    child: Text(
-                  "Нажмите, чтобы развернуть. Прокручивайте таблицу горизонтально.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Constants.btnColor),
-                ))
-              ],
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Image.asset(
+                    // TODO make svg
+                    "assets/images/table.png",
+                    width: size.width < size.height
+                        ? size.width * 0.1
+                        : size.height * 0.1,
+                    height: size.width < size.height
+                        ? size.width * 0.1
+                        : size.height * 0.1,
+                  ),
+                  Flexible(
+                      child: Text(
+                    "Нажмите, чтобы развернуть. Прокручивайте таблицу горизонтально.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Constants.btnColor),
+                  ))
+                ],
+              ),
             ),
           )
         : Column(

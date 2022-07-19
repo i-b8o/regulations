@@ -1,6 +1,7 @@
 part of 'chapter_page_bloc.dart';
 
-class ChapterPageState extends Equatable {
+
+class StateInitChapterPage extends Equatable {
   final TextEditingController appBarOrderNumController;
   final PageController pageController;
 
@@ -12,7 +13,7 @@ class ChapterPageState extends Equatable {
 
   final List<Paragraph> paragraphs;
 
-  ChapterPageState({
+  StateInitChapterPage({
     this.paragraphOrderNum = 0,
     required this.appBarOrderNumController,
     required this.pageController,
@@ -27,7 +28,7 @@ class ChapterPageState extends Equatable {
       [pageController, chapterOrderNum, appBarOrderNumController];
 }
 
-class StateGoTo extends ChapterPageState {
+class StateGoTo extends StateInitChapterPage {
   StateGoTo(
       {required super.paragraphOrderNum,
       required super.appBarOrderNumController,
@@ -37,3 +38,5 @@ class StateGoTo extends ChapterPageState {
       required super.chapterOrderNum,
       required super.totalChapters});
 }
+
+

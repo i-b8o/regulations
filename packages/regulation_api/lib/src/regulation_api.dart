@@ -18,7 +18,7 @@ abstract class RegulationApi {
 
   String getRegulationName();
   
-  GoTo getGoTo(int id);
+  GoTo? getGoTo(int id);
 
   // Future<List<Paragraph>> getParagraphs();
 
