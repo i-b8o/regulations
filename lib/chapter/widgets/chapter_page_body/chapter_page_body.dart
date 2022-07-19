@@ -29,7 +29,7 @@ class ChapterPageBody extends StatefulWidget {
 }
 
 class _ChapterPageBodyState extends State<ChapterPageBody> {
-  final _itemScrollController = ItemScrollController();
+  final ItemScrollController _itemScrollController = ItemScrollController();
 
   // TODO scroll to table paragraph after table collapse
   ParagraphCard _buildParagraphCard(Paragraph paragraph, int index) {
@@ -38,15 +38,21 @@ class _ChapterPageBodyState extends State<ChapterPageBody> {
     );
   }
 
-  void scrollToItem(int orderNum) =>
-      _itemScrollController.jumpTo(index: orderNum);
+  void scrollToItem(int orderNum){
+    if (widget.scrollTo == 0){
+      return;
+    }
+    if (!_itemScrollController.isAttached){
+      return;
+    }
+    _itemScrollController.jumpTo(index: orderNum);
+  }
+      
 
   @override
   Widget build(BuildContext context) {
-    if (widget.scrollTo != 0) {
-      WidgetsBinding.instance
-          .addPostFrameCallback((_) => scrollToItem(widget.scrollTo - 1));
-    }
+    WidgetsBinding.instance.addPostFrameCallback((_) => scrollToItem(widget.scrollTo - 1));
+    
     return ScrollablePositionedList.builder(
       itemScrollController: _itemScrollController,
       itemCount: widget.paragraphs.length,

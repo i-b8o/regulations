@@ -1,5 +1,5 @@
 export 'link.dart';
-export 'alllinks.dart';
+export 'allinks.dart';
 export 'paragraph.dart';
 export 'chapter.dart';
 export 'chapter_info.dart';
