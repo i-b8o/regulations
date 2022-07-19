@@ -54,6 +54,7 @@ class _ChapterPageBodyState extends State<ChapterPageBody> {
 
   @override
   Widget build(BuildContext context) {
+    print("build:" + widget.paragraphs[0].chapterID.toString());
     WidgetsBinding.instance
         .addPostFrameCallback((_) => scrollToItem(widget.scrollTo - 1));
 
