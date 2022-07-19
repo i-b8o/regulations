@@ -7,6 +7,7 @@ part 'chapter_page_body_state.dart';
 
 class ChapterPageBodyBloc extends Bloc<ChapterPageBodyEvent, ChapterPageBodyState> {
   ChapterPageBodyBloc({required this.paragraphs}) : super(ChapterPageBodyInitial()) {
+    print("New bloc ${paragraphs[0].chapterID}");
     on<EventLinkPressed>(_onEventLinkPressed);
   }
 
