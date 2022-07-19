@@ -1,5 +1,5 @@
 class GoTo {
-  final int chapterOrderNum, paragraphOrderNum;
+  final int regId,chapterOrderNum, paragraphOrderNum;
 
-  GoTo({required this.chapterOrderNum, required this.paragraphOrderNum});
+  GoTo({required this.regId,required this.chapterOrderNum, required this.paragraphOrderNum});
 }

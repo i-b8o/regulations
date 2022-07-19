@@ -55,16 +55,17 @@ class LocalStorageRegulationApi extends RegulationApi {
 
   // TODO index all links
   GoTo getGoTo(int id) {
-    print("sssssssssssssssssssssss" + id.toString());
-    Chapter _chapter = Regulation.chapters
-        .where((chapter) => chapter.paragraphs.map((p) => p.id).contains(id))
-        .first;
-    int _paragraphOrderNum =
-        _chapter.paragraphs.where((p) => p.id == id).first.num;
+    Link link = AllLinks.links.where((l) => l.id == id).first;
+    // Chapter _chapter = Regulation.chapters
+    //     .where((chapter) => chapter.paragraphs.map((p) => p.id).contains(id))
+    //     .first;
+    // int _paragraphOrderNum =
+    //     _chapter.paragraphs.where((p) => p.id == id).first.num;
 
     return GoTo(
-        chapterOrderNum: _chapter.orderNum,
-        paragraphOrderNum: _paragraphOrderNum);
+      regId: link.rid,
+        chapterOrderNum: link.chapterNum,
+        paragraphOrderNum: link.paragraphNum, );
   }
 
   // Future<List<Paragraph>> getParagraphs() {}
