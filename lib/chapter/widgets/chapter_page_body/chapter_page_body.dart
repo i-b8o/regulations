@@ -31,17 +31,11 @@ class ChapterPageBody extends StatefulWidget {
 class _ChapterPageBodyState extends State<ChapterPageBody> {
   final _itemScrollController = ItemScrollController();
 
-  @override
-  void initState() {
-    super.initState();
-    if (widget.scrollTo != 0) {
-      scrollToItem(widget.scrollTo);
-    }
-  }
-
   // TODO scroll to table paragraph after table collapse
-  ParagraphCard _buildParagraphCard(Paragraph paragraph) {
-    return ParagraphCard(paragraph: paragraph);
+  ParagraphCard _buildParagraphCard(Paragraph paragraph, int index) {
+    return ParagraphCard(
+      paragraph: paragraph,
+    );
   }
 
   void scrollToItem(int orderNum) =>
@@ -49,6 +43,10 @@ class _ChapterPageBodyState extends State<ChapterPageBody> {
 
   @override
   Widget build(BuildContext context) {
+     if (widget.scrollTo != 0) {
+      WidgetsBinding.instance
+          .addPostFrameCallback((_) => scrollToItem(widget.scrollTo-1));
+    }
     return ScrollablePositionedList.builder(
       itemScrollController: _itemScrollController,
       itemCount: widget.paragraphs.length,
@@ -62,14 +60,14 @@ class _ChapterPageBodyState extends State<ChapterPageBody> {
                 header: widget.header,
                 pClass: widget.paragraphs[index].paragraphClass,
               ),
-              _buildParagraphCard(widget.paragraphs[index]),
+              _buildParagraphCard(widget.paragraphs[index], index),
             ],
           );
         } else if ((index == (widget.paragraphs.length - 1))) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildParagraphCard(widget.paragraphs[index]),
+              _buildParagraphCard(widget.paragraphs[index], index),
               // ChapterPageBodyBtns(
               //     first: first,
               //     pageController: pageController,
@@ -78,7 +76,7 @@ class _ChapterPageBodyState extends State<ChapterPageBody> {
             ],
           );
         }
-        return _buildParagraphCard(widget.paragraphs[index]);
+        return _buildParagraphCard(widget.paragraphs[index], index);
       },
     );
   }

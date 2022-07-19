@@ -19,6 +19,7 @@ class ParagraphCard extends StatelessWidget {
   }) : super(key: key);
   final Paragraph paragraph;
 
+
   void goTo(BuildContext context, int id){
     print("goTo" + id.toString());
     context.read<ChapterPageBloc>().add(EventGoToChapter(id: id));

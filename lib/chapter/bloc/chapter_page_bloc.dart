@@ -37,6 +37,7 @@ class ChapterPageBloc extends Bloc<ChapterPageEvent, ChapterPageState> {
 
   void _onEventChapterPageChanged(
       EventChapterPageChanged event, Emitter<ChapterPageState> emit) {
+        print("_onEventChapterPageChanged");
     appBarOrderNumController.text = event.chapterOrderNum.toString();
     List<Paragraph> _paragraphs = regulationRepository
         .getParagraphsByChapterOrederNum(event.chapterOrderNum);
@@ -44,7 +45,6 @@ class ChapterPageBloc extends Bloc<ChapterPageEvent, ChapterPageState> {
         regulationRepository.getChapterNameByOrderNum(event.chapterOrderNum);
 
     emit(ChapterPageState(
-      
       paragraphs: _paragraphs,
       chapterOrderNum: event.chapterOrderNum,
       appBarOrderNumController: appBarOrderNumController,
@@ -55,17 +55,15 @@ class ChapterPageBloc extends Bloc<ChapterPageEvent, ChapterPageState> {
   }
 
   void _onEventGoToChapter(
-    
-    
       EventGoToChapter event, Emitter<ChapterPageState> emit) {
-GoTo gt = regulationRepository.getGoTo(event.id);
-
+    GoTo gt = regulationRepository.getGoTo(event.id);
+    print("_onEventGoToChapter " + gt.paragraphOrderNum.toString());
     appBarOrderNumController.text = gt.chapterOrderNum.toString();
     List<Paragraph> _paragraphs = regulationRepository
         .getParagraphsByChapterOrederNum(gt.chapterOrderNum);
     String _chapterName =
         regulationRepository.getChapterNameByOrderNum(gt.chapterOrderNum);
-    
+
     emit(ChapterPageState(
       paragraphOrderNum: gt.paragraphOrderNum,
       paragraphs: _paragraphs,
