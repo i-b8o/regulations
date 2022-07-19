@@ -56,7 +56,6 @@ class ChapterPage extends StatelessWidget {
               )),
           body: BlocBuilder<ChapterPageBloc, ChapterPageState>(
             builder: (context, state) {
-              print("chapter_page: " + state.paragraphOrderNum.toString());
               return PageView.builder(
                   itemCount: state.totalChapters,
                   controller: state.pageController,
@@ -65,16 +64,22 @@ class ChapterPage extends StatelessWidget {
                         .read<ChapterPageBloc>()
                         .add(EventChapterPageChanged(index + 1));
                   },
-                  itemBuilder: (context, index) => ChapterPageBody(
-                        scrollTo: state.paragraphOrderNum,
-                        chapterOrderNum: index + 1,
-                        pageController: state.pageController,
-                        header: state.chapterName,
-                        paragraphs: state.paragraphs,
-                        totalChapters: state.totalChapters,
-                        first: (index + 1) == 1,
-                        last: (index + 1) == state.totalChapters,
-                      ));
+                  itemBuilder: (context, index) {
+                    if (state is StateGoTo) {
+                      state.pageController
+                          .jumpToPage(state.chapterOrderNum - 1);
+                    }
+                    return ChapterPageBody(
+                      scrollTo: state.paragraphOrderNum,
+                      chapterOrderNum: state.chapterOrderNum,
+                      pageController: state.pageController,
+                      header: state.chapterName,
+                      paragraphs: state.paragraphs,
+                      totalChapters: state.totalChapters,
+                      first: (index + 1) == 1,
+                      last: (index + 1) == state.totalChapters,
+                    );
+                  });
             },
           )),
     );

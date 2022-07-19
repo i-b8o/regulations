@@ -43,9 +43,9 @@ class _ChapterPageBodyState extends State<ChapterPageBody> {
 
   @override
   Widget build(BuildContext context) {
-     if (widget.scrollTo != 0) {
+    if (widget.scrollTo != 0) {
       WidgetsBinding.instance
-          .addPostFrameCallback((_) => scrollToItem(widget.scrollTo-1));
+          .addPostFrameCallback((_) => scrollToItem(widget.scrollTo - 1));
     }
     return ScrollablePositionedList.builder(
       itemScrollController: _itemScrollController,

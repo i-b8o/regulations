@@ -37,7 +37,7 @@ class ChapterPageBloc extends Bloc<ChapterPageEvent, ChapterPageState> {
 
   void _onEventChapterPageChanged(
       EventChapterPageChanged event, Emitter<ChapterPageState> emit) {
-        print("_onEventChapterPageChanged");
+    print("_onEventChapterPageChanged");
     appBarOrderNumController.text = event.chapterOrderNum.toString();
     List<Paragraph> _paragraphs = regulationRepository
         .getParagraphsByChapterOrederNum(event.chapterOrderNum);
@@ -64,13 +64,13 @@ class ChapterPageBloc extends Bloc<ChapterPageEvent, ChapterPageState> {
     String _chapterName =
         regulationRepository.getChapterNameByOrderNum(gt.chapterOrderNum);
 
-    emit(ChapterPageState(
+    emit(StateGoTo(
       paragraphOrderNum: gt.paragraphOrderNum,
-      paragraphs: _paragraphs,
-      chapterOrderNum: gt.chapterOrderNum,
       appBarOrderNumController: appBarOrderNumController,
-      pageController: pageController,
       chapterName: _chapterName,
+      chapterOrderNum: gt.chapterOrderNum,
+      pageController: pageController,
+      paragraphs: _paragraphs,
       totalChapters: totalChapters,
     ));
   }

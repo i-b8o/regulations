@@ -27,3 +27,13 @@ class ChapterPageState extends Equatable {
       [pageController, chapterOrderNum, appBarOrderNumController];
 }
 
+class StateGoTo extends ChapterPageState {
+  StateGoTo(
+      {required super.paragraphOrderNum,
+      required super.appBarOrderNumController,
+      required super.pageController,
+      required super.chapterName,
+      required super.paragraphs,
+      required super.chapterOrderNum,
+      required super.totalChapters});
+}
