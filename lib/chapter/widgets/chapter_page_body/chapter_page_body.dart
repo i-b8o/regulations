@@ -4,7 +4,7 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import '../../../table_of_contents/widgets/chapter_page_body_header.dart';
 import 'paragraph_card.dart';
 
-class ChapterPageBody extends StatelessWidget {
+class ChapterPageBody extends StatefulWidget {
   ChapterPageBody({
     Key? key,
     required this.header,
@@ -14,7 +14,6 @@ class ChapterPageBody extends StatelessWidget {
     required int chapterOrderNum,
     required this.first,
     required this.last,
-    required this.scrollController,
     required this.scrollTo,
   }) : super(key: key);
   final String header;
@@ -23,44 +22,54 @@ class ChapterPageBody extends StatelessWidget {
   final int scrollTo;
 
   final PageController pageController;
-  final ItemScrollController scrollController;
   final List<Paragraph> paragraphs;
 
-// TODO scroll to table paragraph after table collapse
+  @override
+  State<ChapterPageBody> createState() => _ChapterPageBodyState();
+}
+
+class _ChapterPageBodyState extends State<ChapterPageBody> {
+  final _itemScrollController = ItemScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.scrollTo != 0) {
+      scrollToItem(widget.scrollTo);
+    }
+  }
+
+  // TODO scroll to table paragraph after table collapse
   ParagraphCard _buildParagraphCard(Paragraph paragraph) {
     return ParagraphCard(paragraph: paragraph);
   }
 
-  Future scrollToItem(int orderNum) async {
-    scrollController.jumpTo(index: orderNum);
-  }
+  void scrollToItem(int orderNum) =>
+      _itemScrollController.jumpTo(index: orderNum);
 
   @override
   Widget build(BuildContext context) {
-    if (scrollTo != 0)
-      WidgetsBinding.instance
-          .addPostFrameCallback((_) => scrollToItem(scrollTo));
     return ScrollablePositionedList.builder(
-      itemScrollController: scrollController,
-      itemCount: paragraphs.length,
+      itemScrollController: _itemScrollController,
+      itemCount: widget.paragraphs.length,
       itemBuilder: (BuildContext context, int index) {
         if (index == 0) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ChapterPageBodyHeader(
-                paragraphs: paragraphs,
-                header: header,
-                pClass: paragraphs[index].paragraphClass,
+                paragraphs: widget.paragraphs,
+                header: widget.header,
+                pClass: widget.paragraphs[index].paragraphClass,
               ),
-              _buildParagraphCard(paragraphs[index]),
+              _buildParagraphCard(widget.paragraphs[index]),
             ],
           );
-        } else if ((index == (paragraphs.length - 1))) {
+        } else if ((index == (widget.paragraphs.length - 1))) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildParagraphCard(paragraphs[index]),
+              _buildParagraphCard(widget.paragraphs[index]),
               // ChapterPageBodyBtns(
               //     first: first,
               //     pageController: pageController,
@@ -69,7 +78,7 @@ class ChapterPageBody extends StatelessWidget {
             ],
           );
         }
-        return _buildParagraphCard(paragraphs[index]);
+        return _buildParagraphCard(widget.paragraphs[index]);
       },
     );
   }

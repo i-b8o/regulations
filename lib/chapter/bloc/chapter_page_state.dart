@@ -8,8 +8,6 @@ class ChapterPageState extends Equatable {
 
   final String chapterName;
 
-  final ItemScrollController scrollController = ItemScrollController();
-
   final int paragraphOrderNum;
 
   final List<Paragraph> paragraphs;
@@ -29,19 +27,3 @@ class ChapterPageState extends Equatable {
       [pageController, chapterOrderNum, appBarOrderNumController];
 }
 
-// class StateChapterPageInitial extends ChapterPageState {
-//   final PageController pageController;
-//   final int chapterOrderNum;
-//   StateChapterPageInitial(
-//       {required this.pageController, required this.chapterOrderNum})
-//       : super(pageController: pageController, chapterOrderNum: chapterOrderNum);
-// }
-
-// class StateChapterPageChanged extends ChapterPageState {
-//   final PageController pageController;
-//   final int chapterOrderNum;
-
-//   StateChapterPageChanged(
-//       {required this.pageController, required this.chapterOrderNum})
-//       : super(pageController: pageController, chapterOrderNum: chapterOrderNum);
-// }
