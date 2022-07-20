@@ -6,7 +6,7 @@ import 'package:focused_menu/modals.dart';
 import '../../bloc/chapter_page_bloc.dart';
 import 'bloc/chapter_page_body_bloc.dart';
 import 'paragraph_nft.dart';
-import '../../../constants.dart';
+
 
 import 'package:regulation_api/regulation_api.dart';
 
@@ -54,20 +54,20 @@ class ParagraphCard extends StatelessWidget {
     return FocusedMenuHolder(
       menuItems: [
         FocusedMenuItem(
-            title: Text("AAAAAAA"),
+            title: Text("Редактировать"),
             onPressed: () {},
-            trailingIcon: Icon(Icons.abc))
+            trailingIcon: Icon(Icons.edit))
       ],
       onPressed: () {},
-      menuWidth: MediaQuery.of(context).size.width*0.8,
+      menuWidth: MediaQuery.of(context).size.width * 0.9,
       blurBackgroundColor: Colors.blueGrey[900],
       openWithTap: true,
-      menuOffset: 20,
+      menuOffset: 10,
       blurSize: 1,
-      menuItemExtent: 40,
+      menuItemExtent: 60,
       child: Card(
         shadowColor: Colors.transparent,
-        color: Constants.bodyColor,
+        color: Theme.of(context).scaffoldBackgroundColor,
         margin: EdgeInsets.zero,
         child: pClass == ParagraphClass.indent
             ? SizedBox(
@@ -80,37 +80,36 @@ class ParagraphCard extends StatelessWidget {
 
   Container buildCard(BuildContext context, ParagraphClass pClass) {
     return Container(
-      child: Container(
-          alignment: Alignment.centerLeft,
-          padding: EdgeInsets.symmetric(
-              horizontal: 8.0,
-              vertical: pClass == ParagraphClass.none ? 16.0 : 2.0),
-          child: paragraph.isNFT
-              ? ParagraphNFT(paragraph: paragraph)
-              : paragraph.isTable
-                  ? ParagraphTable(paragraph: paragraph)
-                  : paragraph.isHTML
-                      ? HtmlWidget(
-                          paragraph.content,
-                          customStylesBuilder: pClass == ParagraphClass.none
-                              ? null
-                              : (element) {
-                                  return {
-                                    'text-align': pClass == ParagraphClass.right
-                                        ? 'right'
-                                        : 'center'
-                                  };
-                                },
-                          onTapUrl: (p0) {
-                            int id = int.tryParse(p0) ?? 0;
-                            goTo(context, id);
-                            return false;
-                          },
-                        )
-                      : ParagraphText(
-                          paragraph: paragraph,
-                          pClass: pClass,
-                        )),
-    );
+        alignment: Alignment.centerLeft,
+        padding: EdgeInsets.symmetric(
+            horizontal: 8.0,
+            vertical: pClass == ParagraphClass.none ? 16.0 : 2.0),
+        child: paragraph.isNFT
+            ? ParagraphNFT(paragraph: paragraph)
+            : paragraph.isTable
+                ? ParagraphTable(paragraph: paragraph)
+                : paragraph.isHTML
+                    ? HtmlWidget(
+                      paragraph.content,
+                      textStyle: TextStyle(color: Theme.of(context).textTheme.bodyText2!.color),
+                        customStylesBuilder: pClass == ParagraphClass.none
+                            ? null
+                            : (element) {
+                                return {
+                                  'text-align': pClass == ParagraphClass.right
+                                      ? 'right'
+                                      : 'center'
+                                };
+                              },
+                        onTapUrl: (p0) {
+                          int id = int.tryParse(p0) ?? 0;
+                          goTo(context, id);
+                          return false;
+                        },
+                      )
+                    : ParagraphText(
+                        paragraph: paragraph,
+                        pClass: pClass,
+                      ));
   }
 }

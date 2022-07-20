@@ -6,11 +6,10 @@ import '../table_of_contents.dart';
 class SearchAppBar extends StatelessWidget {
   const SearchAppBar({
     Key? key,
-    this.foregroundColor,
   }) : super(key: key);
-  final Color? foregroundColor;
   @override
   Widget build(BuildContext context) {
+
     return Row(
       children: [
         IconButton(
@@ -21,14 +20,14 @@ class SearchAppBar extends StatelessWidget {
             },
             icon: Icon(
               Icons.arrow_back,
-              size: 24.0,
-              color: foregroundColor,
+            size: Theme.of(context).appBarTheme.iconTheme!.size,
+            color: Theme.of(context).appBarTheme.iconTheme!.color,
             )),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(left: 15.0),
             child: TextField(
-              cursorColor: foregroundColor,
+              cursorColor: Theme.of(context).appBarTheme.foregroundColor,
               decoration: InputDecoration(
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 12, vertical: 7),
@@ -38,13 +37,13 @@ class SearchAppBar extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   child: Icon(
                     Icons.search,
-                    color: foregroundColor,
+                    color: Theme.of(context).appBarTheme.foregroundColor,
                   ),
                 ),
                 border: OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
                     borderSide:
-                        BorderSide(color: Theme.of(context).primaryColor)),
+                        BorderSide(color: Theme.of(context).iconTheme.color!)),
                 isDense: true,
                 hintText: 'Поиск',
               ),
@@ -58,8 +57,8 @@ class SearchAppBar extends StatelessWidget {
           onPressed: () {},
           icon: Icon(
             Icons.search,
-            size: 24.0,
-            color: foregroundColor,
+            size: Theme.of(context).appBarTheme.iconTheme!.size,
+            color: Theme.of(context).appBarTheme.iconTheme!.color,
           ),
         ),
       ],

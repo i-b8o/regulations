@@ -25,8 +25,7 @@ class ChapterPageBodyHeader extends StatelessWidget {
               child: Text(
             header,
             textAlign: TextAlign.center,
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 17.0),
+            style: Theme.of(context).textTheme.headline1,
           )),
         ],
       ),

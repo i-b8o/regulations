@@ -18,6 +18,10 @@ abstract class RegulationApi {
   String getRegulationName();
 
   GoTo? getGoTo(int id);
+
+  setTheme(bool value);
+  
+  getTheme();
   // Future<List<Paragraph>> getParagraphs();
 
   // Future<void> saveParagraph(Paragraph paragraph);

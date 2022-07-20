@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:regulation_api/regulation_api.dart';
+
 
 part 'chapter_page_body_event.dart';
 part 'chapter_page_body_state.dart';

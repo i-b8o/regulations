@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../constants.dart';
+import '../../widgets/regulation_app_bar.dart';
 import '../widgets/chapter_page_body/chapter_page_body.dart';
 import 'package:regulation_repository/regulation_repository.dart';
 
@@ -27,31 +27,26 @@ class ChapterPage extends StatelessWidget {
         totalChapters: chapterArguments.totalChapters,
       ),
       child: Scaffold(
-          backgroundColor: Constants.bodyColor,
           appBar: PreferredSize(
-              preferredSize: Size.fromHeight(64.0),
+              preferredSize: Size.fromHeight(Theme.of(context).appBarTheme.elevation!),
               child: Padding(
                 padding: EdgeInsets.only(
                   top: MediaQuery.of(context).padding.top,
                 ),
-                child: Container(
-                  height: 64.0,
-                  child: BlocBuilder<ChapterPageBloc, StateInitChapterPage>(
-                    buildWhen: (previousState, state) {
-                      return previousState.chapterOrderNum !=
-                          state.chapterOrderNum;
-                    },
-                    builder: (context, state) {
-                      return ParagraphAppBar(
+                child: BlocBuilder<ChapterPageBloc, StateInitChapterPage>(
+                  buildWhen: (previousState, state) {
+                    return previousState.chapterOrderNum !=
+                        state.chapterOrderNum;
+                  },
+                  builder: (context, state) {
+                    return RegulationAppBar(
+                      child: ParagraphAppBar(
                         controller: state.appBarOrderNumController,
                         totalChapters: state.totalChapters,
                         pageController: state.pageController,
-                      );
-                    },
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xFFE2E4E7)),
-                  ),
+                      ),
+                    );
+                  },
                 ),
               )),
           body: BlocBuilder<ChapterPageBloc, StateInitChapterPage>(

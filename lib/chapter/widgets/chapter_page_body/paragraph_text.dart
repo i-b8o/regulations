@@ -18,11 +18,11 @@ class ParagraphText extends StatelessWidget {
 
     return pClass == ParagraphClass.right ? Row(
         mainAxisAlignment: MainAxisAlignment.end,
-        children: [Text(paragraph.content)],
+        children: [Text(paragraph.content, style: Theme.of(context).textTheme.bodyText2 ), ],
       ) : pClass == ParagraphClass.center ? Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Flexible(child: Text(paragraph.content, textAlign: TextAlign.center,))],
-      ) : Text(paragraph.content);  
+        children: [Flexible(child: Text(paragraph.content, textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodyText2))],
+      ) : Text(paragraph.content, style: Theme.of(context).textTheme.bodyText2);  
 
 
   }

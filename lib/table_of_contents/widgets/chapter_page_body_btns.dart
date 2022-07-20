@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
+
 
 class ChapterPageBodyBtns extends StatelessWidget {
   const ChapterPageBodyBtns({
@@ -31,7 +31,7 @@ class ChapterPageBodyBtns extends StatelessWidget {
                   },
                   icon: Icon(
                     Icons.arrow_back_ios,
-                    color: Constants.btnColor,
+                    color:  Theme.of(context).iconTheme.color,
                   ))
               : Container(),
           !last
@@ -43,7 +43,7 @@ class ChapterPageBodyBtns extends StatelessWidget {
                   },
                   icon: Icon(
                     Icons.arrow_forward_ios,
-                    color: Constants.btnColor,
+                    color:  Theme.of(context).iconTheme.color,
                   ))
               : Container()
         ],

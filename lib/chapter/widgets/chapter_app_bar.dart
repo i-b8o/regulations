@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
+
 
 class ParagraphAppBar extends StatelessWidget {
   const ParagraphAppBar({
@@ -15,7 +15,7 @@ class ParagraphAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color? foregroundColor = Theme.of(context).appBarTheme.foregroundColor;
+
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,7 +27,8 @@ class ParagraphAppBar extends StatelessWidget {
           },
           icon: Icon(
             Icons.arrow_back,
-            color: foregroundColor,
+            size: Theme.of(context).appBarTheme.iconTheme!.size,
+            color: Theme.of(context).appBarTheme.iconTheme!.color,
           ),
         ),
         Row(
@@ -47,8 +48,8 @@ class ParagraphAppBar extends StatelessWidget {
               },
               icon: Icon(
                 Icons.arrow_back_ios,
-                size: 20,
-                color: Constants.btnColor,
+                size: Theme.of(context).iconTheme.size,
+                color: Theme.of(context).iconTheme.color,
               ),
             ),
             Container(
@@ -87,17 +88,11 @@ class ParagraphAppBar extends StatelessWidget {
                     ))),
             Text.rich(TextSpan(
                 text: ' стр. из ',
-                style: TextStyle(
-                  color: foregroundColor,
-                  fontSize: 18,
-                ),
+                style: Theme.of(context).appBarTheme.toolbarTextStyle,
                 children: <InlineSpan>[
                   TextSpan(
                     text: '$totalChapters',
-                    style: TextStyle(
-                        color: Constants.appBarHeaderColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                    style: TextStyle(color: Theme.of(context).appBarTheme.titleTextStyle!.color , fontWeight: FontWeight.w400),
                   )
                 ])),
             IconButton(
@@ -117,9 +112,8 @@ class ParagraphAppBar extends StatelessWidget {
               },
               icon: Icon(
                 Icons.arrow_forward_ios,
-                size: 20,
-                
-                color: Constants.btnColor,
+                size: Theme.of(context).iconTheme.size,
+                color: Theme.of(context).iconTheme.color,
               ),
             )
           ],

@@ -10,27 +10,26 @@ class TableOfContentsAppBar extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  Widget _buildChild(TableOfContentsState state) {
+    if (state is StateTableOfContentsSearchTextFieldActivated) {
+      return SearchAppBar();
+    }
+    if (state is StateTableOfContentsInitial) {
+      return InitAppBAr(
+        name: state.name,
+        title: state.title,
+      );
+    }
+    return Container();
+  }
+
   @override
   Widget build(BuildContext context) {
-    Color? foregroundColor = Theme.of(context).appBarTheme.foregroundColor;
     return BlocBuilder<TableOfContentsBloc, TableOfContentsState>(
       buildWhen: (prev, state) => prev.runtimeType != state.runtimeType,
       builder: (context, state) {
-        if (state is StateTableOfContentsSearchTextFieldActivated) {
-          return SearchAppBar(
-            foregroundColor: foregroundColor,
-          );
-        }
-        if (state is StateTableOfContentsInitial) {
-          return InitAppBAr(
-            foregroundColor: foregroundColor,
-            name: state.name,
-            title: state.title,
-          );
-        }
-        return Container();
+        return _buildChild(state);
       },
     );
-
   }
 }

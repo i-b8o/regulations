@@ -24,4 +24,9 @@ class RegulationRepository {
 
   GoTo? getGoTo(int id) => _regulationApi.getGoTo(id);
 
+
+  setTheme(bool value) => _regulationApi.setTheme(value);
+  
+  getTheme() => _regulationApi.getTheme();
+
 }

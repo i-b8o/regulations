@@ -8,6 +8,7 @@ import '../chapter/view/chapter_page.dart';
 import '../one/one.dart';
 import '../table_of_contents/view/table_of_contents.dart';
 import '../theme/theme.dart';
+import 'bloc/app_bloc.dart';
 
 class App extends StatelessWidget {
   const App({Key? key, required this.regulationRepository}) : super(key: key);
@@ -23,11 +24,10 @@ class App extends StatelessWidget {
 }
 
 class ChapterArguments {
-  
   final int totalChapters, chapterOrderNum;
 
-  ChapterArguments({ required this.totalChapters, required this.chapterOrderNum});
-
+  ChapterArguments(
+      {required this.totalChapters, required this.chapterOrderNum});
 }
 
 class AppView extends StatelessWidget {
@@ -43,21 +43,34 @@ class AppView extends StatelessWidget {
           ),
         ),
         BlocProvider(create: (_) => HomeCubit()),
+        BlocProvider(
+            create: (_) => AppBloc(
+                  regulationRepository: context.read<RegulationRepository>(),
+                )),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: FlutterRegulationTheme.light,
-        darkTheme: FlutterRegulationTheme.dark,
-        routes: {
-          '/': (context) => HomePage(),
-          '/buy': (context) => One(),
-          '/tableOfContents': (context) => (TableOfContentsPage()),
-          '/paragraph': (context) => ChapterPage(
-                chapterArguments: ModalRoute.of(context)!.settings.arguments as ChapterArguments,
-              )
+      child: BlocBuilder<AppBloc, AppState>(
+        builder: (context, state) {
+          print("AAAMMM: "+context.select((AppBloc cubit) => cubit.isDark).toString());
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: context.select((AppBloc cubit) => cubit.isDark)
+                ? FlutterRegulationTheme.dark
+                : FlutterRegulationTheme.light,
+
+            darkTheme: FlutterRegulationTheme.dark,
+            routes: {
+              '/': (context) => HomePage(),
+              '/buy': (context) => One(),
+              '/tableOfContents': (context) => (TableOfContentsPage()),
+              '/paragraph': (context) => ChapterPage(
+                    chapterArguments: ModalRoute.of(context)!.settings.arguments
+                        as ChapterArguments,
+                  )
+            },
+            initialRoute: '/',
+            // home: const HomePage(),
+          );
         },
-        initialRoute: '/',
-        // home: const HomePage(),
       ),
     );
   }

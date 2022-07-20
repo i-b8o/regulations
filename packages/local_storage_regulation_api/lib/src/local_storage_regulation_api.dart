@@ -90,6 +90,24 @@ class LocalStorageRegulationApi extends RegulationApi {
     }
   }
 
+  static const THEME_KYE = 'theme_key';
+
+  setTheme(bool value) async {
+    try {
+      await _plugin.setBool(THEME_KYE, value);
+    } catch (e) {
+      return;
+    }
+  }
+
+  getTheme() async {
+    try {
+      bool theme_value = await _plugin.getBool(THEME_KYE) ?? false;
+      return theme_value;
+    } catch (e) {
+      return false;
+    }
+  }
   // Future<List<Paragraph>> getParagraphs() {}
 
   // Future<void> saveParagraph(Paragraph paragraph) {}
