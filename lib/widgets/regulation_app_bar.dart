@@ -13,7 +13,7 @@ class RegulationAppBar extends StatelessWidget {
       child: child,
       decoration: BoxDecoration(
         color: Theme.of(context).appBarTheme.backgroundColor,
-        border: Border.all(width: 2, color: Theme.of(context).appBarTheme.shadowColor!),
+        border: Border(bottom: BorderSide(width: 2, color: Theme.of(context).appBarTheme.shadowColor!)),
       ),
     );
   }

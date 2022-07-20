@@ -10,18 +10,21 @@ class ParagraphNFT extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical:10.0),
-        child: HtmlWidget(
-          paragraph.content,
-          customStylesBuilder: (element) => {
-            'font-family': 'Courier New,"Monospace"',
-            'white-space': 'pre',
-            'font-size': '17.5px',
-            'letter-spacing': '0',
-            'line-height': '5px',
-            'font-weight': '500',
-          },
+      child: Container(
+        color: Theme.of(context).textTheme.headline2!.backgroundColor,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical:20.0),
+          child: HtmlWidget(
+            paragraph.content,
+            customStylesBuilder: (element) => {
+              'font-family': 'Courier New,"Monospace"',
+              'white-space': 'pre',
+              'font-size': '17.5px',
+              'letter-spacing': '0',
+              'line-height': '5px',
+              'font-weight': '500',
+            },
+          ),
         ),
       ),
     );

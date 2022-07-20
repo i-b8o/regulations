@@ -80,21 +80,27 @@ class ParagraphAppBar extends StatelessWidget {
                     controller: controller,
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.center,
+                    style: TextStyle(color: Theme.of(context).iconTheme.color),
+
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.zero,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(7.0),
                       ),
                     ))),
-            Text.rich(TextSpan(
-                text: ' стр. из ',
-                style: Theme.of(context).appBarTheme.toolbarTextStyle,
-                children: <InlineSpan>[
-                  TextSpan(
-                    text: '$totalChapters',
-                    style: TextStyle(color: Theme.of(context).appBarTheme.titleTextStyle!.color , fontWeight: FontWeight.w400),
-                  )
-                ])),
+            Padding(
+              
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Text.rich(TextSpan(
+                  text: ' стр. из ',
+                  style: Theme.of(context).appBarTheme.toolbarTextStyle,
+                  children: <InlineSpan>[
+                    TextSpan(
+                      text: '$totalChapters',
+                      style: TextStyle(color: Theme.of(context).appBarTheme.titleTextStyle!.color , fontWeight: FontWeight.w400),
+                    )
+                  ])),
+            ),
             IconButton(
               onPressed: () {
                 int? pageNum = int.tryParse(controller.text);

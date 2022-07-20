@@ -51,6 +51,18 @@ class ParagraphCard extends StatelessWidget {
         pClass = ParagraphClass.none;
     }
     ;
+    if (paragraph.isNFT || paragraph.isTable ){
+      return Card(
+        shadowColor: Colors.transparent,
+        color: Theme.of(context).scaffoldBackgroundColor,
+        margin: EdgeInsets.zero,
+        child: pClass == ParagraphClass.indent
+            ? SizedBox(
+                height: 15,
+              )
+            : buildCard(context, pClass),
+      );
+    }
     return FocusedMenuHolder(
       menuItems: [
         FocusedMenuItem(

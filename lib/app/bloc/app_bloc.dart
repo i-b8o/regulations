@@ -9,14 +9,23 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc({required RegulationRepository regulationRepository})
       : _regulationRepository = regulationRepository,
         super(AppInitial()) {
-          _isDark = true; 
-    on<AppEvent>((event, emit) {
-      // TODO: implement event handler
+
+    // TODO refactor _onAppThemeInitialEvent
+    on<AppThemeInitialEvent>((event, emit) async {
+      emit(AppInitial());
+      await getTheme();
+      emit(AppThemeState(_isDark));
+    });
+
+    // TODO refactor _onAppThemeSetEvent
+    on<AppThemeSetEvent>((event, emit) {
+      isDark = event.isDark;
+      emit(AppThemeState(_isDark));
     });
   }
   final RegulationRepository _regulationRepository;
 
-  bool _isDark = true;
+  bool _isDark = false;
   bool get isDark => _isDark;
 
   getTheme() async {

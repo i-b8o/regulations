@@ -46,14 +46,13 @@ class AppView extends StatelessWidget {
         BlocProvider(
             create: (_) => AppBloc(
                   regulationRepository: context.read<RegulationRepository>(),
-                )),
+                )..add(AppThemeInitialEvent())),
       ],
       child: BlocBuilder<AppBloc, AppState>(
         builder: (context, state) {
-          print("AAAMMM: "+context.select((AppBloc cubit) => cubit.isDark).toString());
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: context.select((AppBloc cubit) => cubit.isDark)
+            theme: state is AppThemeState && state.isDark
                 ? FlutterRegulationTheme.dark
                 : FlutterRegulationTheme.light,
 

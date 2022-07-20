@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:regulation_api/regulation_api.dart';
 
-
-
 class ParagraphTable extends StatefulWidget {
   const ParagraphTable({
     Key? key,
@@ -29,29 +27,45 @@ class _ParagraphTableState extends State<ParagraphTable> {
               });
             },
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    // TODO make svg
-                    "assets/images/table.png",
-                    width: size.width < size.height
+                  Icon(
+                    Icons.zoom_out_map_rounded,
+                    size: size.width < size.height
                         ? size.width * 0.1
                         : size.height * 0.1,
-                    height: size.width < size.height
-                        ? size.width * 0.1
-                        : size.height * 0.1,
+                    
                   ),
-                  Flexible(
+                  SizedBox(height: size.width * 0.05,),
+                  Center(
                       child: Text(
-                    "Нажмите, чтобы развернуть. Прокручивайте таблицу горизонтально.",
+                    "Нажмите, чтобы развернуть.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Theme.of(context).iconTheme.color,),
+                      fontWeight: FontWeight.w100,
+                      color: Theme.of(context).iconTheme.color,
+                    ),
+                  )),
+                  // Image.asset(
+                  //   // TODO make svg
+                  //   "assets/images/table.png",
+                  // width: size.width < size.height
+                  //     ? size.width * 0.1
+                  //     : size.height * 0.1,
+                  // height: size.width < size.height
+                  //     ? size.width * 0.1
+                  //     : size.height * 0.1,
+                  // ),
+                  // Flexible(
+                  //     child: Text(
+                  //   "Нажмите, чтобы развернуть. Прокручивайте таблицу горизонтально.",
+                  //   textAlign: TextAlign.center,
+                  //   style: TextStyle(fontWeight: FontWeight.w100,
+                  //       color: Theme.of(context).primaryColor,),
 
-
-                  ))
+                  // ))
                 ],
               ),
             ),
@@ -60,28 +74,32 @@ class _ParagraphTableState extends State<ParagraphTable> {
             children: [
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: HtmlWidget(widget.paragraph.content,
-                    customStylesBuilder: (element) {
-                  switch (element.localName) {
-                    case 'table':
-                      return {
-                        'border': '1px solid',
-                        'border-collapse': 'collapse',
-                        'font-size': '16px',
-                        'line-height': '18px',
-                        'letter-spacing': '0',
-                        'font-weight': '400',
-                        'font-family': 'Times New Roman',
-                      };
-                    case 'td':
-                      return {'border': '1px solid', 'vertical-align': 'top'};
-                  }
-                  if (element.className.contains('align_center')) {
-                    return {'text-align': 'center', 'width': '100%'};
-                  }
+                child: Container(
+                  color: Theme.of(context).textTheme.headline2!.backgroundColor,
+                  child: HtmlWidget(widget.paragraph.content,
+                  textStyle: Theme.of(context).textTheme.headline2,
+                      customStylesBuilder: (element) {
+                    switch (element.localName) {
+                      case 'table':
+                        return {
+                          'border': '1px solid',
+                          'border-collapse': 'collapse',
+                          'font-size': '16px',
+                          'line-height': '18px',
+                          'letter-spacing': '0',
+                          'font-weight': '400',
+                          'font-family': 'Times New Roman',
+                        };
+                      case 'td':
+                        return {'border': '1px solid', 'vertical-align': 'top'};
+                    }
+                    if (element.className.contains('align_center')) {
+                      return {'text-align': 'center', 'width': '100%'};
+                    }
 
-                  return null;
-                }),
+                    return null;
+                  }),
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -98,13 +116,13 @@ class _ParagraphTableState extends State<ParagraphTable> {
                             padding: EdgeInsets.only(top: 2.0),
                             child: Icon(
                               Icons.arrow_drop_up,
-                              color:
-                                   Theme.of(context).iconTheme.color,
+                              color: Theme.of(context).iconTheme.color,
                             ),
                           ),
                           Text("Свернуть",
                               style: TextStyle(
-                                  color:  Theme.of(context).iconTheme.color, fontWeight: FontWeight.w400))
+                                  color: Theme.of(context).iconTheme.color,
+                                  fontWeight: FontWeight.w400))
                         ],
                       )),
                 ],
