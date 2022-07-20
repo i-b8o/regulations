@@ -42,13 +42,10 @@ class _ChapterPageBodyState extends State<ChapterPageBody> {
   }
 
   void scrollToItem(int orderNum) {
-    print("BBBBBBBBBBBB" + orderNum.toString());
     if (orderNum < 1) {
-      print("HERE 1");
       return;
     }
     if (!_itemScrollController.isAttached) {
-      print("HERE 2");
       return;
     }
     _itemScrollController.jumpTo(index: orderNum);
@@ -66,7 +63,6 @@ class _ChapterPageBodyState extends State<ChapterPageBody> {
       child: BlocBuilder<ChapterPageBodyBloc, ChapterPageBodyState>(
         builder: (context, state) {
           if (state is StateLinkInChapter) {
-            print("AAAAAAAAAAAAAAAAAAA");
             scrollToItem(state.index - 1);
           }
           return ScrollablePositionedList.builder(

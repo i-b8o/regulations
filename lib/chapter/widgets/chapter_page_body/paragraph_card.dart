@@ -25,7 +25,7 @@ class ParagraphCard extends StatelessWidget {
   void goTo(BuildContext context, int id) {
     int index = ids.indexOf(id);
     if (index > 0) {
-      context.read<ChapterPageBodyBloc>().add(EventLinkPressed(index+1));
+      context.read<ChapterPageBodyBloc>().add(EventLinkPressed(index + 1));
       return;
     }
 

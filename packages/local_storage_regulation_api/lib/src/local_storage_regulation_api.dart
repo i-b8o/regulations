@@ -24,47 +24,70 @@ class LocalStorageRegulationApi extends RegulationApi {
   }
 
   List<ChapterInfo> getTableOfContents() {
-    _tableOfContents.sort((a, b) => a.orderNum.compareTo(b.orderNum));
-    return _tableOfContents;
+    try {
+      _tableOfContents.sort((a, b) => a.orderNum.compareTo(b.orderNum));
+      return _tableOfContents;
+    } catch (e) {
+      return [];
+    }
   }
 
   int countChapters() {
-    return Regulation.chapters.length;
+    try {
+      return Regulation.chapters.length;
+    } catch (e) {
+      return 0;
+    }
   }
 
   List<Paragraph> getParagraphsByChapterOrderNum(int chapterID) {
-    Chapter chapter = Regulation.chapters
-        .where((chapter) => chapter.orderNum == chapterID)
-        .first;
-    return chapter.paragraphs;
+    try {
+      Chapter chapter = Regulation.chapters
+          .where((chapter) => chapter.orderNum == chapterID)
+          .first;
+      return chapter.paragraphs;
+    } catch (e) {
+      return [];
+    }
   }
 
   String getChapterNameByOrderNum(int chapterID) {
-    Chapter chapter = Regulation.chapters
-        .where((chapter) => chapter.orderNum == chapterID)
-        .first;
-    String result = chapter.num.length > 0
-        ? '${chapter.num}. ${chapter.name}'
-        : chapter.name;
-    return result;
+    try {
+      Chapter chapter = Regulation.chapters
+          .where((chapter) => chapter.orderNum == chapterID)
+          .first;
+      String result = chapter.num.length > 0
+          ? '${chapter.num}. ${chapter.name}'
+          : chapter.name;
+      return result;
+    } catch (e) {
+      return "";
+    }
   }
 
   String getRegulationName() {
-    return Regulation.name;
+    try {
+      return Regulation.name;
+    } catch (e) {
+      return "";
+    }
   }
 
   GoTo? getGoTo(int id) {
-    List<Link> links = AllLinks.links.where((l) => l.id == id).toList();
-
-    if (links.isEmpty) {
+    try {
+      List<Link> links = AllLinks.links.where((l) => l.id == id).toList();
+      if (links.isEmpty) {
+        return null;
+      }
+      Link link = links.first;
+      return GoTo(
+        regId: link.rid,
+        chapterOrderNum: link.chapterNum,
+        paragraphOrderNum: link.paragraphNum,
+      );
+    } catch (e) {
       return null;
     }
-    Link link = links.first;
-    return GoTo(
-      regId: link.rid,
-      chapterOrderNum: link.chapterNum,
-      paragraphOrderNum: link.paragraphNum,
-    );
   }
 
   // Future<List<Paragraph>> getParagraphs() {}
