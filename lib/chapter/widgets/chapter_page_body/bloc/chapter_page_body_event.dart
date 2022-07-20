@@ -8,7 +8,8 @@ abstract class ChapterPageBodyEvent extends Equatable {
 }
 
 class EventLinkPressed extends ChapterPageBodyEvent {
-  final int id;
+  final int index;
 
-  EventLinkPressed(this.id);
+  EventLinkPressed(this.index);
+   List<Object> get props => [index];
 }

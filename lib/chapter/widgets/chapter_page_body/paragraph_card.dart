@@ -16,12 +16,19 @@ enum ParagraphClass { right, center, indent, none }
 class ParagraphCard extends StatelessWidget {
   const ParagraphCard({
     Key? key,
+    required this.ids,
     required this.paragraph,
   }) : super(key: key);
   final Paragraph paragraph;
+  final List<int> ids;
 
   void goTo(BuildContext context, int id) {
-    context.read<ChapterPageBodyBloc>().add(EventLinkPressed(id));
+    int index = ids.indexOf(id);
+    if (index > 0) {
+      context.read<ChapterPageBodyBloc>().add(EventLinkPressed(index+1));
+      return;
+    }
+
     context.read<ChapterPageBloc>().add(EventGoToChapter(id: id));
   }
 

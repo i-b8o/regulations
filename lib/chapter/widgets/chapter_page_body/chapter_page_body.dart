@@ -17,13 +17,11 @@ class ChapterPageBody extends StatefulWidget {
     required this.first,
     required this.last,
     required this.scrollTo,
-  
   }) : super(key: key);
   final String header;
   final int totalChapters;
   final bool first, last;
   final int scrollTo;
-  
 
   final PageController pageController;
   final List<Paragraph> paragraphs;
@@ -36,17 +34,21 @@ class _ChapterPageBodyState extends State<ChapterPageBody> {
   final ItemScrollController _itemScrollController = ItemScrollController();
 
   // TODO scroll to table paragraph after table collapse
-  ParagraphCard _buildParagraphCard(Paragraph paragraph, int index) {
+  ParagraphCard _buildParagraphCard(Paragraph paragraph, List<int> ids) {
     return ParagraphCard(
+      ids: ids,
       paragraph: paragraph,
     );
   }
 
   void scrollToItem(int orderNum) {
-    if (widget.scrollTo == 0) {
+    print("BBBBBBBBBBBB" + orderNum.toString());
+    if (orderNum < 1) {
+      print("HERE 1");
       return;
     }
     if (!_itemScrollController.isAttached) {
+      print("HERE 2");
       return;
     }
     _itemScrollController.jumpTo(index: orderNum);
@@ -54,15 +56,17 @@ class _ChapterPageBodyState extends State<ChapterPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    print("build:" + widget.paragraphs[0].chapterID.toString());
     WidgetsBinding.instance
         .addPostFrameCallback((_) => scrollToItem(widget.scrollTo - 1));
 
+    List<int> ids = widget.paragraphs.map((p) => p.id).toList();
+
     return BlocProvider(
-      create: (context) => ChapterPageBodyBloc(paragraphs: widget.paragraphs),
+      create: (context) => ChapterPageBodyBloc(),
       child: BlocBuilder<ChapterPageBodyBloc, ChapterPageBodyState>(
         builder: (context, state) {
           if (state is StateLinkInChapter) {
+            print("AAAAAAAAAAAAAAAAAAA");
             scrollToItem(state.index - 1);
           }
           return ScrollablePositionedList.builder(
@@ -78,14 +82,14 @@ class _ChapterPageBodyState extends State<ChapterPageBody> {
                       header: widget.header,
                       pClass: widget.paragraphs[index].paragraphClass,
                     ),
-                    _buildParagraphCard(widget.paragraphs[index], index),
+                    _buildParagraphCard(widget.paragraphs[index], ids),
                   ],
                 );
               } else if ((index == (widget.paragraphs.length - 1))) {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildParagraphCard(widget.paragraphs[index], index),
+                    _buildParagraphCard(widget.paragraphs[index], ids),
                     // ChapterPageBodyBtns(
                     //     first: first,
                     //     pageController: pageController,
@@ -94,7 +98,7 @@ class _ChapterPageBodyState extends State<ChapterPageBody> {
                   ],
                 );
               }
-              return _buildParagraphCard(widget.paragraphs[index], index);
+              return _buildParagraphCard(widget.paragraphs[index], ids);
             },
           );
         },
