@@ -29,19 +29,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  unity_ads_plugin: ^0.3.3
   focused_menu: ^1.0.5
   flutter_tts: ^3.2.4
-  material_design_icons_flutter: ^5.0.6595
   shared_preferences: ^2.0.9
-  provider: ^6.0.1
-  rxdart: ^0.27.3
   flutter_bloc: ^8.0.1
   bloc: ^8.0.3
   equatable: ^2.0.3
-  dynamic_color: ^1.4.0
   flutter_widget_from_html: ^0.8.5
   scrollable_positioned_list: ^0.3.2
+
 
 
   local_storage_regulation_api:
