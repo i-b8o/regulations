@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../table_of_contents.dart';
+import '../../table_of_contents.dart';
 import 'init_app_bar.dart';
 import 'search_app_bar.dart';
 

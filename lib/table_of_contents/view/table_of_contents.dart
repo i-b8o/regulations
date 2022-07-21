@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../widgets/regulation_app_bar.dart';
 import '../bloc/table_of_contents_bloc.dart';
-import '../widgets/chapter_cadr.dart';
-import '../widgets/navigation_drawer.dart';
+import '../widgets/body/chapter_card.dart';
+import '../widgets/navigation_drawer/navigation_drawer.dart';
 import '../widgets/widgets.dart';
 
 class TableOfContentsPage extends StatelessWidget {

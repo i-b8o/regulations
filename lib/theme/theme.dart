@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class FlutterRegulationTheme {
   static ThemeData get light {
     return ThemeData(
+      // TODO name focusColor is not right for a blurBackgroundColor field of a FocusedMenuItem
+      focusColor: Colors.blueGrey[900],
       appBarTheme: const AppBarTheme(
         elevation: 64,
         backgroundColor: Color(0xFFf4f5f7),
@@ -20,6 +22,9 @@ class FlutterRegulationTheme {
           size: 27,
           color: Color(0XFF707783),
         ),
+      ),
+      drawerTheme: DrawerThemeData(
+        backgroundColor: Color(0xFFfcfcfc),
       ),
       scaffoldBackgroundColor: Colors.white,
       textTheme: const TextTheme(
@@ -39,6 +44,7 @@ class FlutterRegulationTheme {
 
   static ThemeData get dark {
     return ThemeData(
+      focusColor: Colors.white,
       shadowColor: Color(0xFF353535),
       appBarTheme: const AppBarTheme(
           elevation: 64,
@@ -55,6 +61,7 @@ class FlutterRegulationTheme {
             color: Colors.white,
           ),
           foregroundColor: Color(0XFF747E8B)),
+      drawerTheme: DrawerThemeData(backgroundColor: Color(0xFF25292a)),
       scaffoldBackgroundColor: Color(0xFF0b0b0b),
       textTheme: const TextTheme(
           headline1: TextStyle(

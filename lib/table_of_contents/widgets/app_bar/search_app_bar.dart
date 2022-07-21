@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../table_of_contents.dart';
+import '../../table_of_contents.dart';
 
 class SearchAppBar extends StatelessWidget {
   const SearchAppBar({

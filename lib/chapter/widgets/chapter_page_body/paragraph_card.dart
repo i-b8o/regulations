@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
+import '../../../edit_paragraph/edit_paragraph_page.dart';
 import '../../bloc/chapter_page_bloc.dart';
 import 'bloc/chapter_page_body_bloc.dart';
 import 'paragraph_nft.dart';
-
 
 import 'package:regulation_api/regulation_api.dart';
 
@@ -51,7 +51,7 @@ class ParagraphCard extends StatelessWidget {
         pClass = ParagraphClass.none;
     }
     ;
-    if (paragraph.isNFT || paragraph.isTable ){
+    if (paragraph.isNFT || paragraph.isTable) {
       return Card(
         shadowColor: Colors.transparent,
         color: Theme.of(context).scaffoldBackgroundColor,
@@ -67,12 +67,18 @@ class ParagraphCard extends StatelessWidget {
       menuItems: [
         FocusedMenuItem(
             title: Text("Редактировать"),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                '/edit',
+                arguments: paragraph.content,
+              );
+            },
             trailingIcon: Icon(Icons.edit))
       ],
       onPressed: () {},
       menuWidth: MediaQuery.of(context).size.width * 0.9,
-      blurBackgroundColor: Colors.blueGrey[900],
+      blurBackgroundColor: Theme.of(context).focusColor,
       openWithTap: true,
       menuOffset: 10,
       blurSize: 1,
@@ -102,8 +108,10 @@ class ParagraphCard extends StatelessWidget {
                 ? ParagraphTable(paragraph: paragraph)
                 : paragraph.isHTML
                     ? HtmlWidget(
-                      paragraph.content,
-                      textStyle: TextStyle(color: Theme.of(context).textTheme.bodyText2!.color),
+                        paragraph.content,
+                        textStyle: TextStyle(
+                            color:
+                                Theme.of(context).textTheme.bodyText2!.color),
                         customStylesBuilder: pClass == ParagraphClass.none
                             ? null
                             : (element) {

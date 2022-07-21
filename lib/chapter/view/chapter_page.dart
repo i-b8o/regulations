@@ -6,7 +6,7 @@ import 'package:regulation_repository/regulation_repository.dart';
 
 import '../../app/app.dart';
 import '../bloc/chapter_page_bloc.dart';
-import '../widgets/chapter_app_bar.dart';
+import '../widgets/chapter_app_bar/chapter_app_bar.dart';
 
 class ChapterPage extends StatelessWidget {
   const ChapterPage({Key? key, required this.chapterArguments})

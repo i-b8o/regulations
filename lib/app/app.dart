@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../home/home.dart';
-
+import '../edit_paragraph/edit_paragraph_page.dart';
 import '../table_of_contents/bloc/table_of_contents_bloc.dart';
 import 'package:regulation_repository/regulation_repository.dart';
 import '../chapter/view/chapter_page.dart';
-import '../one/one.dart';
 import '../table_of_contents/view/table_of_contents.dart';
 import '../theme/theme.dart';
 import 'bloc/app_bloc.dart';
@@ -42,7 +40,6 @@ class AppView extends StatelessWidget {
             regulationRepository: context.read<RegulationRepository>(),
           ),
         ),
-        BlocProvider(create: (_) => HomeCubit()),
         BlocProvider(
             create: (_) => AppBloc(
                   regulationRepository: context.read<RegulationRepository>(),
@@ -58,12 +55,13 @@ class AppView extends StatelessWidget {
 
             darkTheme: FlutterRegulationTheme.dark,
             routes: {
-              '/': (context) => HomePage(),
-              '/buy': (context) => One(),
-              '/tableOfContents': (context) => (TableOfContentsPage()),
+              '/': (context) => (TableOfContentsPage()),
               '/paragraph': (context) => ChapterPage(
                     chapterArguments: ModalRoute.of(context)!.settings.arguments
                         as ChapterArguments,
+                  ),
+              '/edit': (context) => EditParagraphPage(
+                    text: ModalRoute.of(context)!.settings.arguments as String,
                   )
             },
             initialRoute: '/',

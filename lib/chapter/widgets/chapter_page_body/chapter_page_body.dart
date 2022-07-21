@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:regulation_api/regulation_api.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import '../../../table_of_contents/widgets/chapter_page_body_header.dart';
+import '../../../table_of_contents/widgets/body/chapter_page_body_header.dart';
 import 'bloc/chapter_page_body_bloc.dart';
 import 'paragraph_card.dart';
 
