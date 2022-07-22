@@ -32,6 +32,8 @@ class FlutterRegulationTheme {
               color: Color(0xFF001a3b),
               fontWeight: FontWeight.bold,
               fontSize: 17.0),
+          headline2:
+              TextStyle(color: Colors.black, backgroundColor: Colors.white),
           bodyText1: TextStyle(
               color: Color(0XFF3B4C61),
               fontWeight: FontWeight.w600,
