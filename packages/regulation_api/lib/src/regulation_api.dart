@@ -20,8 +20,12 @@ abstract class RegulationApi {
   GoTo? getGoTo(int id);
 
   setTheme(bool value);
-  
+
   getTheme();
+
+  setColorPickerColors(List<int> colors);
+
+  getColorPickerColors();
   // Future<List<Paragraph>> getParagraphs();
 
   // Future<void> saveParagraph(Paragraph paragraph);
