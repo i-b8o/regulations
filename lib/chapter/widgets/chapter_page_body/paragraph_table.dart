@@ -42,7 +42,7 @@ class _ParagraphTableState extends State<ParagraphTable> {
                   SizedBox(height: size.width * 0.05,),
                   Center(
                       child: Text(
-                    "Нажмите, чтобы развернуть.",
+                    "Развернуть таблицу",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w100,

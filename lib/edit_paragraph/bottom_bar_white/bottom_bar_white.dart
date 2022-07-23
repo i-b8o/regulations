@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 import 'bottom_bar_white_colors_list_view.dart';
 import 'bottom_bar_white_text.dart';
@@ -48,7 +49,9 @@ class BottomBarWhite extends StatelessWidget {
                         shape: BoxShape.circle,
                         border: Border.all(color: Color(0xFFf2f2f2))),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _pickColor(context);
+                      },
                       icon: Container(
                           child: Image.asset(
                         'assets/images/colors.png',
@@ -56,7 +59,6 @@ class BottomBarWhite extends StatelessWidget {
                         height: height * 0.1,
                       )),
                     )),
-
                 RegulationsColorPicker(
                   MediaQuery.of(context).size.width * 0.7,
                 ),
@@ -65,4 +67,21 @@ class BottomBarWhite extends StatelessWidget {
           ]),
         ));
   }
+
+  void _pickColor(BuildContext context) => showDialog(
+      context: context,
+      builder: (context) => Container(
+        height: height*0.5,
+        child: AlertDialog(
+          elevation: height*0.5,
+              content: ColorPicker(
+                enableAlpha: false,
+                labelTypes: [],
+                onColorChanged: (Color value) {
+                  print(value);
+                },
+                pickerColor: Colors.black,
+              ),
+            ),
+      ));
 }

@@ -39,6 +39,8 @@ dependencies:
   scrollable_positioned_list: ^0.3.2
   rolling_switch: ^0.0.2
   html: ^0.15.0
+  flutter_colorpicker: ^1.0.3
+
 
 
   local_storage_regulation_api:
