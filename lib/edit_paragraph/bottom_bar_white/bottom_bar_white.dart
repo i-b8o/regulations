@@ -70,18 +70,15 @@ class BottomBarWhite extends StatelessWidget {
 
   void _pickColor(BuildContext context) => showDialog(
       context: context,
-      builder: (context) => Container(
-        height: height*0.5,
-        child: AlertDialog(
-          elevation: height*0.5,
-              content: ColorPicker(
-                enableAlpha: false,
-                labelTypes: [],
-                onColorChanged: (Color value) {
-                  print(value);
-                },
-                pickerColor: Colors.black,
-              ),
+      builder: (context) => AlertDialog(
+        elevation: height*0.5,
+            content: ColorPicker(
+              enableAlpha: false,
+              labelTypes: [],
+              onColorChanged: (Color value) {
+                print(value);
+              },
+              pickerColor: Colors.black,
             ),
-      ));
+          ));
 }
