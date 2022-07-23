@@ -70,6 +70,7 @@ flutter:
 
   assets:
     - assets/images/table.png
+    - assets/images/colors.png
     # - assets/images/icon-1.png
 
   fonts:

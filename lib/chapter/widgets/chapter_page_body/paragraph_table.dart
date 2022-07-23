@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:regulation_api/regulation_api.dart';
 
+// TODO Drop statefull
 class ParagraphTable extends StatefulWidget {
   const ParagraphTable({
     Key? key,

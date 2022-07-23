@@ -33,9 +33,36 @@ class BottomBarWhite extends StatelessWidget {
             BottomBarWhiteColorsListView(
               height: height,
             ),
-            RegulationsColorPicker(MediaQuery.of(context).size.width * 0.7, )
+            SizedBox(
+              height: height * 0.2,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.05,
+                ),
+                Container(
+                    height: height * 0.2,
+                    width: height * 0.2,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Color(0xFFf2f2f2))),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Container(
+                          child: Image.asset(
+                        'assets/images/colors.png',
+                        width: height * 0.1,
+                        height: height * 0.1,
+                      )),
+                    )),
+
+                RegulationsColorPicker(
+                  MediaQuery.of(context).size.width * 0.7,
+                ),
+              ],
+            )
           ]),
         ));
   }
 }
-

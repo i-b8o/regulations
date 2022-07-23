@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/edit_paragraph_bloc.dart';
 
+// TODO Drop statefull 
 class RegulationsColorPicker extends StatefulWidget {
   final double width;
   RegulationsColorPicker(this.width);
@@ -43,7 +44,7 @@ class _RegulationsColorPickerState extends State<RegulationsColorPicker> {
     if (position < 0) {
       position = 0;
     }
-    
+
     setState(() {
       _colorSliderPosition = position;
       _currentColor = _calculateSelectedColor(_colorSliderPosition);
@@ -54,9 +55,9 @@ class _RegulationsColorPickerState extends State<RegulationsColorPicker> {
     //determine color
     double positionInColorArray =
         (position / widget.width * (_colors.length - 1));
-    
+
     int index = positionInColorArray.truncate();
-    
+
     double remainder = positionInColorArray - index;
     if (remainder == 0.0) {
       _currentColor = _colors[index];
@@ -90,17 +91,22 @@ class _RegulationsColorPickerState extends State<RegulationsColorPicker> {
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onHorizontalDragStart: (DragStartDetails details) {
-              
               _colorChangeHandler(details.localPosition.dx);
-              context.read<EditParagraphBloc>().add(EventColorCircleChanged(_currentColor.value));
+              context
+                  .read<EditParagraphBloc>()
+                  .add(EventColorCircleChanged(_currentColor.value));
             },
             onHorizontalDragUpdate: (DragUpdateDetails details) {
               _colorChangeHandler(details.localPosition.dx);
-              context.read<EditParagraphBloc>().add(EventColorCircleChanged(_currentColor.value));
+              context
+                  .read<EditParagraphBloc>()
+                  .add(EventColorCircleChanged(_currentColor.value));
             },
             onTapDown: (TapDownDetails details) {
               _colorChangeHandler(details.localPosition.dx);
-              context.read<EditParagraphBloc>().add(EventColorCircleChanged(_currentColor.value));
+              context
+                  .read<EditParagraphBloc>()
+                  .add(EventColorCircleChanged(_currentColor.value));
             },
             //This outside padding makes it much easier to grab the   slider because the gesture detector has
             // the extra padding to recognize gestures inside of
@@ -131,8 +137,8 @@ class _SliderIndicatorPainter extends CustomPainter {
   _SliderIndicatorPainter(this.position);
   @override
   void paint(Canvas canvas, Size size) {
-    canvas.drawCircle(
-        Offset(position, size.height / 2), 12, Paint()..color = Colors.black);
+    // TODO make like image
+    canvas.drawCircle(Offset(position, size.height / 2), 12, Paint()..color = Colors.black);
   }
 
   @override
