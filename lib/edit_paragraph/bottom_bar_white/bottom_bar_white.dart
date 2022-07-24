@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import "package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart";
 
+import '../bloc/edit_paragraph_bloc.dart';
 import 'bottom_bar_white_colors_list_view.dart';
 import 'bottom_bar_white_text.dart';
 import 'color_picker/color_picker.dart';
@@ -42,23 +44,7 @@ class BottomBarWhite extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.05,
                 ),
-                Container(
-                    height: height * 0.2,
-                    width: height * 0.2,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Color(0xFFf2f2f2))),
-                    child: IconButton(
-                      onPressed: () {
-                        _pickColor(context);
-                      },
-                      icon: Container(
-                          child: Image.asset(
-                        'assets/images/colors.png',
-                        width: height * 0.1,
-                        height: height * 0.1,
-                      )),
-                    )),
+                ColorsCircleBtn(height: height),
                 RegulationsColorPicker(
                   MediaQuery.of(context).size.width * 0.7,
                 ),
@@ -67,18 +53,45 @@ class BottomBarWhite extends StatelessWidget {
           ]),
         ));
   }
+}
+
+class ColorsCircleBtn extends StatelessWidget {
+  const ColorsCircleBtn({Key? key, required this.height}) : super(key: key);
+ final double height;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: height * 0.2,
+        width: height * 0.2,
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: Color(0xFFf2f2f2))),
+        child: IconButton(
+          onPressed: () {
+            _pickColor(context);
+          },
+          icon: Container(
+              child: Image.asset(
+            'assets/images/colors.png',
+            width: height * 0.1,
+            height: height * 0.1,
+          )),
+        ));
+  }
 
   void _pickColor(BuildContext context) => showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        elevation: height*0.5,
-            content: ColorPicker(
-              enableAlpha: false,
-              labelTypes: [],
-              onColorChanged: (Color value) {
-                print(value);
+            content: Container(
+                // height: height * 1.7,
+                child: ColorPicker(
+              color: Colors.blue,
+              onChanged: (value) {
+                context
+                    .read<EditParagraphBloc>()
+                    .add(EventColorCircleChanged(value.value));
               },
-              pickerColor: Colors.black,
-            ),
+              initialPicker: Picker.paletteHue,
+            )),
           ));
 }

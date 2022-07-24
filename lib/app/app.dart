@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../edit_paragraph/bloc/edit_paragraph_bloc.dart';
 import '../edit_paragraph/edit_paragraph_page.dart';
 import '../table_of_contents/bloc/table_of_contents_bloc.dart';
 import 'package:regulation_repository/regulation_repository.dart';
@@ -44,6 +45,10 @@ class AppView extends StatelessWidget {
             create: (_) => AppBloc(
                   regulationRepository: context.read<RegulationRepository>(),
                 )..add(AppThemeInitialEvent())),
+        BlocProvider(
+          create: (context) => EditParagraphBloc(
+              regulationRepository: context.read<RegulationRepository>()),
+        ),
       ],
       child: BlocBuilder<AppBloc, AppState>(
         builder: (context, state) {

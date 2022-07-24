@@ -24,14 +24,15 @@ class BottomBarWhiteCircle extends StatelessWidget {
       },
       child: BlocBuilder<EditParagraphBloc, EditParagraphState>(
         buildWhen: (previous, current) =>
-            (previous.activeCircleColor != current.activeCircleColor) &&
+            (previous.listcolorsInt[index] != current.listcolorsInt[index]) &&
             isActive,
         builder: (context, state) {
           return Container(
             width: height * 0.15,
             height: height * 0.15,
             decoration: BoxDecoration(
-                shape: BoxShape.circle, color: Color(state.activeCircleColor)),
+                shape: BoxShape.circle,
+                color:  color),
             child: isActive
                 ? Icon(
                     Icons.check,

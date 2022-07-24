@@ -35,32 +35,28 @@ class EditParagraphPage extends StatelessWidget {
           ),
           child: OrientationBuilder(
             builder: (BuildContext context, Orientation orientation) {
-              return BlocProvider(
-                create: (context) => EditParagraphBloc(
-                    regulationRepository: context.read<RegulationRepository>()),
-                child: Stack(children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: SelectableText(
-                      _parseHtmlString(_text),
-                      toolbarOptions: ToolbarOptions(copy: true),
-                    ),
+              return Stack(children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: SelectableText(
+                    _parseHtmlString(_text),
+                    toolbarOptions: ToolbarOptions(copy: true),
                   ),
-                  BottomBarBlack(
-                    iconSize: orientation == Orientation.portrait
-                        ? _height * 0.02
-                        : _height * 0.04,
-                    height: orientation == Orientation.portrait
-                        ? _height * 0.4
-                        : _height * 0.6,
-                  ),
-                  BottomBarWhite(
-                    height: orientation == Orientation.portrait
-                        ? _height * 0.32
-                        : _height * 0.48,
-                  )
-                ]),
-              );
+                ),
+                BottomBarBlack(
+                  iconSize: orientation == Orientation.portrait
+                      ? _height * 0.02
+                      : _height * 0.04,
+                  height: orientation == Orientation.portrait
+                      ? _height * 0.4
+                      : _height * 0.6,
+                ),
+                BottomBarWhite(
+                  height: orientation == Orientation.portrait
+                      ? _height * 0.32
+                      : _height * 0.48,
+                )
+              ]);
             },
           )),
     );
