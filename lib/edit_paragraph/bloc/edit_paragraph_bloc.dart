@@ -65,6 +65,7 @@ class EditParagraphBloc extends Bloc<EditParagraphEvent, EditParagraphState> {
     on<EditParagraphInitialEvent>(_onEditParagraphInitialEvent);
     on<EventColorCircleChoosen>(_onEventColorCircleChoosen);
     on<EventColorCircleChanged>(_onEventColorCircleChanged);
+    on<EventColorCircleAdded>(_onEventColorCircleAdded);
   }
 
   void _onEditParagraphInitialEvent(
@@ -82,8 +83,6 @@ class EditParagraphBloc extends Bloc<EditParagraphEvent, EditParagraphState> {
 
   void _onEventColorCircleChoosen(
       EventColorCircleChoosen event, Emitter<EditParagraphState> emit) {
-    // setColorByIndex(activeColorCircleIndex, activeCircleColor);
-    // userColorsList[activeColorCircleIndex] = activeCircleColor;
     activeColorCircleIndex = event.index;
     emit(EditParagraphState(
         activeCircleColor: activeCircleColor,
@@ -95,8 +94,17 @@ class EditParagraphBloc extends Bloc<EditParagraphEvent, EditParagraphState> {
       EventColorCircleChanged event, Emitter<EditParagraphState> emit) {
     activeCircleColor = event.color;
     userColorsList[activeColorCircleIndex] = activeCircleColor;
-    
 
+    emit(EditParagraphState(
+        activeCircleColor: activeCircleColor,
+        activeColorCircleIndex: activeColorCircleIndex,
+        listcolorsInt: userColorsList));
+  }
+
+  void _onEventColorCircleAdded(
+      EventColorCircleAdded event, Emitter<EditParagraphState> emit) {
+    userColorsList.add(0xFF525965);
+    print("AAAAAAAA");
     emit(EditParagraphState(
         activeCircleColor: activeCircleColor,
         activeColorCircleIndex: activeColorCircleIndex,

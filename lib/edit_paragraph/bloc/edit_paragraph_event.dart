@@ -36,3 +36,9 @@ class EventColorCircleChanged extends EditParagraphInitialEvent {
   @override
   List<Object> get props => [color];
 }
+
+class EventColorCircleAdded extends EditParagraphInitialEvent {
+  EventColorCircleAdded();
+  @override
+  List<Object> get props => [];
+}

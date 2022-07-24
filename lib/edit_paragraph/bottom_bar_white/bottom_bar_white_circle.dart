@@ -30,9 +30,7 @@ class BottomBarWhiteCircle extends StatelessWidget {
           return Container(
             width: height * 0.15,
             height: height * 0.15,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color:  color),
+            decoration: BoxDecoration(shape: BoxShape.circle, color: color),
             child: isActive
                 ? Icon(
                     Icons.check,

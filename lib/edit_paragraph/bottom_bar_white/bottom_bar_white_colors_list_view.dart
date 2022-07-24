@@ -22,9 +22,11 @@ class BottomBarWhiteColorsListView extends StatelessWidget {
     return Container(
       height: height * 0.15,
       child: BlocBuilder<EditParagraphBloc, EditParagraphState>(
-        buildWhen: (previous, current) => previous != current,
+        buildWhen: (previous, current) =>
+            (previous != current) ||
+            (previous.listcolorsInt != current.listcolorsInt),
         builder: (context, state) {
-          print("LV build");
+          print("rebuild");
           List<int> _colors = state.listcolorsInt;
           return ListView.separated(
             padding: EdgeInsets.symmetric(
@@ -37,17 +39,25 @@ class BottomBarWhiteColorsListView extends StatelessWidget {
                     index,
                     state.activeColorCircleIndex == index,
                   )
-                : Container(
-                    width: height * 0.15,
-                    height: height * 0.15,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 1, color: Color(0xFF8d8d8d)),
-                        shape: BoxShape.circle,
-                        color: Color(0xFFf9f9f9)),
-                    child: Icon(
-                      Icons.add,
-                      color: Color(0xFF8d8d8d),
-                    )),
+                : GestureDetector(
+                    onTap: () {
+                      context
+                          .read<EditParagraphBloc>()
+                          .add(EventColorCircleAdded());
+                    },
+                    child: Container(
+                        width: height * 0.15,
+                        height: height * 0.15,
+                        decoration: BoxDecoration(
+                            border:
+                                Border.all(width: 1, color: Color(0xFF8d8d8d)),
+                            shape: BoxShape.circle,
+                            color: Color(0xFFf9f9f9)),
+                        child: Icon(
+                          Icons.add,
+                          color: Color(0xFF8d8d8d),
+                        )),
+                  ),
             itemCount: _colors.length + 1,
             separatorBuilder: (context, index) => SizedBox(
               width: MediaQuery.of(context).size.width * 0.03,
